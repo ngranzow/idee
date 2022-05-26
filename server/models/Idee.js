@@ -28,7 +28,7 @@ const ideeSchema = new Schema(
   }
 );
 
-Idee.virtual('IdeereplyCount').get(function() {
+ideeSchema.virtual('IdeereplyCount').get(function() {
   return this.replys.length;
 });
 
