@@ -14,12 +14,11 @@ Idee.init(
         type: DataTypes.STRING,
         allowNull: false
     },
-    comment_text: {
-      type: DataTypes.STRING,
+    idee_text: {
+      type: String,
       allowNull: false,
-      validate: {
-        len: [1]
-      }
+      minlength: 1,
+      maxlength: 50
     },
     user_id: {
       type: DataTypes.INTEGER,
