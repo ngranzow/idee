@@ -44,6 +44,10 @@ export const ADD_IDEE = gql`
       ideeText
       createdAt
       username
+      replyCount
+      replys {
+        _id
+      }
     }
   }
 `;
@@ -62,3 +66,19 @@ export const ADD_IDEE = gql`
 //     }
 //   }
 // `;
+
+
+export const ADD_REPLY = gql`
+  mutation addReply($thoughtId: ID!, $replyBody: String!) {
+    addReply(thoughtId: $thoughtId, replyBody: $replyBody) {
+      _id
+      replyCount
+      replys {
+        _id
+        replyBody
+        createdAt
+        username
+      }
+    }
+  }
+`;
