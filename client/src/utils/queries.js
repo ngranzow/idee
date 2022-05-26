@@ -56,6 +56,48 @@ export const QUERY_USER = gql`
   }
 `;
 
+export const QUERY_COMMUNITY = gql`
+  query community($communityname: String!) {
+      community(communityname: $communityname) {
+          _id
+          communityname
+          idees {
+            _id
+            ideeText
+            createdAt
+            replyCount
+            replys {
+                _id
+                createdAt
+                username
+                replyBody
+              }
+          }
+      }
+  }
+`
+
+export const QUERY_COMMUNITIES = gql`
+  query communities($communityname: String) {
+      communities(communityname: $communityname) {
+        _id
+        communityname
+        idees {
+          _id
+          ideeText
+          createdAt
+          replyCount
+          replys {
+              _id
+              createdAt
+              username
+              replyBody
+            }
+        }
+      }
+  }
+`
+
 export const QUERY_ME = gql`
   {
     me {
