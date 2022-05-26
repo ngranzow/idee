@@ -13,7 +13,7 @@ const resolvers = {
                     .select('-__v -password')
                     .populate('idees')
                     .populate('friends')
-                    .populate('community');
+                    .populate('communities');
 
                 return userData;
             }
@@ -36,7 +36,7 @@ const resolvers = {
         users: async () => {
             return User.find()
                 .select('-__v -password')
-                .populate('community')
+                .populate('communities')
                 .populate('friends')
                 .populate('idees');
         },
@@ -44,7 +44,7 @@ const resolvers = {
         user: async (parent, { username }) => {
             return User.findOne({ username })
                 .select('-__v -password')
-                .populate('community')
+                .populate('communities')
                 .populate('friends')
                 .populate('idees');
         },
@@ -96,11 +96,11 @@ const resolvers = {
         },
 
         //ADD REACTION
-        addReaction: async (parent, { ideeID, reactionBody }, context) => {
+        addReply: async (parent, { ideeID, replyBody }, context) => {
             if (context.user) {
                 const updatedIdee = await Idee.findOneAndUpdate(
                     { _id: ideeID },
-                    { $push: { reactions: { reactionBody, username: context.user.username } } },
+                    { $push: { replys: { replyBody, username: context.user.username } } },
                     { new: true, runValidators: true }
                 );
 
@@ -132,7 +132,7 @@ const resolvers = {
                     { _id: context.user._id },
                     { $addToSet: { friends: communityID } },
                     { new: true }
-                ).populate('community');
+                ).populate('communities');
 
                 return updatedUser;
             }
