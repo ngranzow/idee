@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const Ideereplys = require('./Ideereply');
+const replySchema = require('./Ideereply');
 const dateFormat = require('../utils/dateFormat');
 
 const ideeSchema = new Schema(
@@ -19,7 +19,7 @@ const ideeSchema = new Schema(
       type: String,
       required: true
     },
-    Ideereplys: [IdeereplySchema]
+    replys: [replySchema]
   },
   {
     toJSON: {
@@ -28,9 +28,10 @@ const ideeSchema = new Schema(
   }
 );
 
-ideeSchema.virtual('IdeereplyCount').get(function() {
-  return this.Ideereplys.length;
+Idee.virtual('IdeereplyCount').get(function() {
+  return this.replys.length;
 });
 
-const idee = model('idee', ideeSchema);
+const Idee = model('idee', ideeSchema);
+
 module.exports = Idee;

@@ -27,6 +27,13 @@ const typeDefs = gql`
     username: String
   }
 
+  type Community {
+      _id: ID
+      communityname: String
+      createdAt: String
+      username: String
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -46,6 +53,7 @@ const typeDefs = gql`
     addIdee(ideeText: String!): Idee
     addReply(ideeId: ID!, replyBody: String!): Idee
     addFriend(friendId: ID!): User
+    addCommunity(communityID: ID!): Community
   }
 `;
 
