@@ -8,7 +8,7 @@ import Login from './pages/Login';
 import NoMatch from './pages/NoMatch';
 import Community from './pages/Community';
 import YourIdee from './pages/YourIdee';
-import Signup from './pages/Signup';
+import Signup from './pages/Singup';
 import Home from './pages/Home';
 
 const httpLink = createHttpLink({

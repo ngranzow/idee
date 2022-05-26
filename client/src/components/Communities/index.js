@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Communities = ({ username, communities }) => {
     if (!communities || !communities.length) {
         return <p className="bg-dark text-light p-3">{username}, join some communities!</p>;
