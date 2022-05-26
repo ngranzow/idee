@@ -2,7 +2,7 @@ const { Schema } = require('mongoose');
 
 const replySchema = new Schema(
   {
-    reactionBody: {
+    replyBody: {
       type: String,
       required: true,
       maxlength: 280
