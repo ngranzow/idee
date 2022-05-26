@@ -60,7 +60,7 @@ const resolvers = {
             return { token, user };
         },
 
-        //Login Check 
+        //Login Check
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 
@@ -95,12 +95,12 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        //ADD REACTION
-        addReaction: async (parent, { ideeID, reactionBody }, context) => {
+        //ADD REPLY
+        addReply: async (parent, { ideeID, replyBody }, context) => {
             if (context.user) {
                 const updatedIdee = await Idee.findOneAndUpdate(
                     { _id: ideeID },
-                    { $push: { reactions: { reactionBody, username: context.user.username } } },
+                    { $push: { replys: { replyBody, username: context.user.username } } },
                     { new: true, runValidators: true }
                 );
 
