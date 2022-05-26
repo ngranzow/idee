@@ -1,45 +1,36 @@
 const { Schema, model } = require('mongoose');
+const reactions = require('./Reaction');
 const dateFormat = require('../utils/dateFormat');
-class Idee extends Model {}
 
-Idee.init(
+const ideeSchema = new Schema(
   {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
-    },
-    title: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    idee_text: {
+    ideeText: {
       type: String,
-      allowNull: false,
+      required: 'Leave your idee',
       minlength: 1,
       maxlength: 50
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: timestamp => dateFormat(timestamp)
     },
-    post_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'post',
-        key: 'id'
-      }
-    }
+    username: {
+      type: String,
+      required: true
+    },
+    reactions: [reactionSchema]
   },
   {
-    sequelize,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'comment'
+    toJSON: {
+      getters: true
+    }
   }
 );
+
+ideeSchema.virtual('reactionCount').get(function() {
+  return this.reactions.length;
+});
+
+const idee = model('idee', ideeSchema);
 module.exports = Idee;
