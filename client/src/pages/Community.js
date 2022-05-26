@@ -32,7 +32,7 @@ const SingleThought = (props) => {
           <p>{idee.ideeText}</p>
         </div>
       </div>
-      {idee.reactionCount > 0 && <Idees idee={idee} />}
+      {idee.replyCount > 0 && <Idees idee={idee} />}
       {Auth.loggedIn() && <IdeeForm ideeId={idee._id} />}
     </div>
   );
