@@ -52,21 +52,6 @@ export const ADD_IDEE = gql`
   }
 `;
 
-// export const ADD_REACTION = gql`
-//   mutation addReaction($thoughtId: ID!, $reactionBody: String!) {
-//     addReaction(thoughtId: $thoughtId, reactionBody: $reactionBody) {
-//       _id
-//       reactionCount
-//       reactions {
-//         _id
-//         reactionBody
-//         createdAt
-//         username
-//       }
-//     }
-//   }
-// `;
-
 
 export const ADD_REPLY = gql`
   mutation addReply($thoughtId: ID!, $replyBody: String!) {
