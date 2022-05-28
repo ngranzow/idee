@@ -7,6 +7,13 @@ export const QUERY_IDEES = gql`
       ideeText
       createdAt
       username
+      replyCount
+      replys {
+        _id
+        createdAt
+        username
+        replyBody
+      }
     }
   }
 `;
@@ -18,6 +25,13 @@ export const QUERY_IDEE = gql`
       ideeText
       createdAt
       username
+      replyCount
+      replys {
+        _id
+        createdAt
+        username
+        replyBody
+      }
     }
   }
 `;
@@ -36,10 +50,53 @@ export const QUERY_USER = gql`
         _id
         ideeText
         createdAt
+        replyCount
       }
     }
   }
 `;
+
+export const QUERY_COMMUNITY = gql`
+  query community($communityname: String!) {
+      community(communityname: $communityname) {
+          _id
+          communityname
+          idees {
+            _id
+            ideeText
+            createdAt
+            replyCount
+            replys {
+                _id
+                createdAt
+                username
+                replyBody
+              }
+          }
+      }
+  }
+`
+
+export const QUERY_COMMUNITIES = gql`
+  query communities($communityname: String) {
+      communities(communityname: $communityname) {
+        _id
+        communityname
+        idees {
+          _id
+          ideeText
+          createdAt
+          replyCount
+          replys {
+              _id
+              createdAt
+              username
+              replyBody
+            }
+        }
+      }
+  }
+`
 
 export const QUERY_ME = gql`
   {
@@ -51,6 +108,13 @@ export const QUERY_ME = gql`
         _id
         ideeText
         createdAt
+        replyCount
+        replys {
+          _id
+          createdAt
+          replyBody
+          username
+        }
       }
       communities {
         _id

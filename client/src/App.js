@@ -10,6 +10,7 @@ import Community from './pages/Community';
 import YourIdee from './pages/YourIdee';
 import Signup from './pages/Singup';
 import Home from './pages/Home';
+import SingleIdee from './pages/SingleIdee'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -53,6 +54,10 @@ function App() {
               <Route
                 path="/youridee"
                 element={<YourIdee />}
+              />
+              <Route
+                path="/singleidee:id"
+                element={<SingleIdee />}
               />
               <Route
                 path="/community"

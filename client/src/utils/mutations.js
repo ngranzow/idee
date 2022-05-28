@@ -44,21 +44,26 @@ export const ADD_IDEE = gql`
       ideeText
       createdAt
       username
+      replyCount
+      replys {
+        _id
+      }
     }
   }
 `;
 
-// export const ADD_REACTION = gql`
-//   mutation addReaction($thoughtId: ID!, $reactionBody: String!) {
-//     addReaction(thoughtId: $thoughtId, reactionBody: $reactionBody) {
-//       _id
-//       reactionCount
-//       reactions {
-//         _id
-//         reactionBody
-//         createdAt
-//         username
-//       }
-//     }
-//   }
-// `;
+
+export const ADD_REPLY = gql`
+  mutation addReply($thoughtId: ID!, $replyBody: String!) {
+    addReply(thoughtId: $thoughtId, replyBody: $replyBody) {
+      _id
+      replyCount
+      replys {
+        _id
+        replyBody
+        createdAt
+        username
+      }
+    }
+  }
+`;

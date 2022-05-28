@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Idees = ({ idees, title }) => {
@@ -25,7 +26,7 @@ const Idees = ({ idees, title }) => {
                             <Link to={`/idee/${idee._id}`}>
                                 <p>{idee.ideeText}</p>
                                 <p className="mb-0">
-                                    Reactions: {idee} || Click to{' '}
+                                    Replys: {idee} || Click to{' '}
                                     {idee ? 'see' : 'start'} the discussion!
                                 </p>
                             </Link>
