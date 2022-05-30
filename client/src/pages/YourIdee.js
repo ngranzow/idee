@@ -4,9 +4,6 @@ import Idees from '../components/Idees';
 import Communities from '../components/Communities';
 import IdeeForm from '../components/IdeeForm';
 
-import ReplyList from '../components/ReplyList';
-import ReplyForm from '../components/ReplyForm';
-
 import { useQuery, useMutation } from '@apollo/client';
 import { ADD_COMMUNITY } from '../utils/mutations';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
