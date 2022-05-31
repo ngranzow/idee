@@ -11,7 +11,14 @@ import YourIdee from './pages/YourIdee';
 import Signup from './pages/Singup';
 import Home from './pages/Home';
 import SingleIdee from './pages/SingleIdee'
+// Importing Chakra UI
+import * as React from 'react'
 
+// 1. import `ChakraProvider` component
+import { ChakraProvider } from '@chakra-ui/react'
+
+
+// End of Importing Chakra
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -33,6 +40,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
+    <ChakraProvider>
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
@@ -73,6 +81,7 @@ function App() {
         </div>
       </Router>
     </ApolloProvider>
+    </ChakraProvider>
   );
 }
 

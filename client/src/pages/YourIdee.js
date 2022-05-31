@@ -3,7 +3,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import Idees from '../components/Idees';
 import Communities from '../components/Communities';
 import IdeeForm from '../components/IdeeForm';
-import FriendList from '../components/FriendList';
+// import FriendList from '../components/FriendList';
 
 import { useQuery, useMutation } from '@apollo/client';
 import { ADD_FRIEND, ADD_COMMUNITY } from '../utils/mutations';

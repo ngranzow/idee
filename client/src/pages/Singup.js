@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { Button, ButtonGroup } from '@chakra-ui/react'
 
 const Signup = () => {
   const [formState, setFormState] = useState({ username: '', email: '', password: '' });
@@ -68,9 +69,9 @@ const Signup = () => {
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button className='btn d-block w-100' type='submit'>
+              <Button colorScheme='blue' type='submit'>
                 Submit
-              </button>
+              </Button>
             </form>
             {error && <div>Sign up failed</div>}
           </div>
