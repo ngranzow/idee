@@ -2,6 +2,11 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+//CHAKRA
+import {Flex, Vstack, Heading} from '@chakra-ui/layout'
+import {IconButton} from '@chakra-ui/button'
+import {FaSun, FaMoon, FaHouseUser, FaUser, FaUserFriends} from 'react-icons/fa'
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './pages/Login';
@@ -32,8 +37,49 @@ const client = new ApolloClient({
 });
 
 function App() {
+
+   //CHAKRA - Light and Dark Modes
+   const {colorMode, toggleColorMode} = useColorMode();
+   const isDark = colorMode==="dark";
+ 
+
   return (
+    
     <ApolloProvider client={client}>
+
+        <ChakraProvider>
+        <Vstack p={5}>
+
+          <Flex w="100%">
+
+            <Heading 
+                ml="8" size="md" fontWeight='semibold' color="cyan.400">idee</Heading>
+
+            <Spacer></Spacer>
+
+            <IconButton ml={8} icon={<FaHouseUser />} isRound="true" onClick={toggleColorMode}>
+            </IconButton>
+
+            <IconButton ml={8} icon={<FaUser />} isRound="true" onClick={toggleColorMode}>
+            </IconButton>
+
+            <IconButton ml={8} icon={<FaUserFriends />} isRound="true" onClick={toggleColorMode}>
+            </IconButton>
+
+            <IconButton ml={4} icon={isDark ? <FaSun /> : <FaMoon />} isRound="true" onClick={toggleColorMode}>
+            </IconButton>   
+
+          </Flex>   
+
+          <Header></Header>
+          <Social></Social>
+          <Profile></Profile>
+
+        </Vstack>
+
+        <App />
+        </ChakraProvider>
+
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
@@ -73,6 +119,8 @@ function App() {
         </div>
       </Router>
     </ApolloProvider>
+
+    
   );
 }
 
