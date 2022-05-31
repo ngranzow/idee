@@ -14,7 +14,7 @@ const Idees = ({ idees, title }) => {
                     <div key={idee._id} className="card mb-3">
                         <p className="card-header">
                             <Link
-                                to={`/profile/${idee.username}`}
+                                to={`/youridee/${idee.username}`}
                                 style={{ fontWeight: 700 }}
                                 className="text-light"
                             >

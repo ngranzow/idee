@@ -11,8 +11,8 @@ const ReplyList = ({ replys }) => {
         {replys &&
           replys.map(reply => (
             <p className="pill mb-3" key={reply._id}>
-              {reply.replyBody} //{' '}
-              <Link to={`/profile/${reply.username}`} style={{ fontWeight: 700 }}>
+              {reply.replyBody}
+              <Link to={`/youridee/${reply.username}`} style={{ fontWeight: 700 }}>
                 {reply.username} on {reply.createdAt}
               </Link>
             </p>

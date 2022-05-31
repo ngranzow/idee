@@ -8,7 +8,7 @@ import Login from './pages/Login';
 import NoMatch from './pages/NoMatch';
 import Community from './pages/Community';
 import YourIdee from './pages/YourIdee';
-import Signup from './pages/Singup';
+import Signup from './pages/Signup';
 import Home from './pages/Home';
 import SingleIdee from './pages/SingleIdee'
 
@@ -56,7 +56,7 @@ function App() {
                 element={<YourIdee />}
               />
               <Route
-                path="/singleidee:id"
+                path="/idee:id"
                 element={<SingleIdee />}
               />
               <Route
