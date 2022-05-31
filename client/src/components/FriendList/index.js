@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const FriendList = ({ friendCount, username, friends }) => {
     if (!friends || !friends.length) {
-        return <p className="bg-dark text-light p-3">{username}, make some friends!</p>;
+        return <p className="bg-dark text-light p-3">{username}, you have no friends!</p>;
     }
 
     return (
@@ -12,7 +12,7 @@ const FriendList = ({ friendCount, username, friends }) => {
             </h5>
             {friends.map(friend => (
                 <button className="btn w-100 display-block mb-2" key={friend._id}>
-                    <Link to={`/profile/${friend.username}`}>{friend.username}</Link>
+                    <Link to={`/youridee/${friend.username}`}>{friend.username}</Link>
                 </button>
             ))}
         </div>

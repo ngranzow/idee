@@ -10,7 +10,7 @@ const ReplyForm = ({ ideeId }) => {
 
   // update state based on form input changes
   const handleChange = (event) => {
-    if (event.target.value.length <= 280) {
+    if (event.target.value.length <= 50) {
       setBody(event.target.value);
       setCharacterCount(event.target.value.length);
     }
@@ -36,9 +36,9 @@ const ReplyForm = ({ ideeId }) => {
   return (
     <div>
       <p
-        className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
+        className={`m-0 ${characterCount === 50 || error ? 'text-error' : ''}`}
       >
-        Character Count: {characterCount}/280
+        Character Count: {characterCount}/50
         {error && <span className="ml-2">Something went wrong...</span>}
       </p>
       <form
