@@ -3,14 +3,16 @@ import { Navigate, useParams } from 'react-router-dom';
 import Idees from '../components/Idees';
 import Communities from '../components/Communities';
 import IdeeForm from '../components/IdeeForm';
+import FriendList from '../components/FriendList';
 
 import { useQuery, useMutation } from '@apollo/client';
-import { ADD_COMMUNITY } from '../utils/mutations';
+import { ADD_FRIEND, ADD_COMMUNITY } from '../utils/mutations';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
 const YourIdee = (props) => {
   const { username: userParam } = useParams();
+  const [addFriend] = useMutation(ADD_FRIEND);
   const [addCommunity] = useMutation(ADD_COMMUNITY);
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
@@ -20,7 +22,7 @@ const YourIdee = (props) => {
   const user = data?.me || data?.user || {};
 
   // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  if (Auth.loggedIn() && Auth.getYourIdee().data.username === userParam) {
     return <Navigate to="/youridee:username" />;
   }
 
@@ -37,7 +39,17 @@ const YourIdee = (props) => {
     );
   }
 
-  const handleClick = async () => {
+  const handleFriendClick = async () => {
+    try {
+      await addFriend({
+        variables: { id: user._id },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleCommunityClick = async () => {
     try {
       await addCommunity({
         variables: { id: user._id }
@@ -55,15 +67,27 @@ const YourIdee = (props) => {
         </h2>
 
         {userParam && (
-          <button className="btn ml-auto" onClick={handleClick}>
-            Add Community
-          </button>
+          <div>
+            <button className="btn ml-auto" onClick={handleFriendClick}>
+              Add Friend
+            </button>
+            <button className="btn ml-auto" onClick={handleCommunityClick}>
+              Add Community
+            </button>
+          </div>
         )}
       </div>
 
       <div className="flex-row justify-space-between mb-3">
         <div className="col-12 mb-3 col-lg-8">
-          <Idees thoughts={user.idee} title={`${user.username}'s Idees...`} />
+          <Idees idees={user.idees  } title={`${user.username}'s Idees...`} />
+        </div>
+        <div className="col-12 col-lg-3 mb-3">
+          <FriendList
+            username={user.username}
+            friendCount={user.friendCount}
+            friends={user.friends}
+          />
         </div>
         <div className="col-12 col-lg-3 mb-3">
           <Communities
