@@ -6,7 +6,7 @@ const ideeSchema = new Schema(
   {
     ideeText: {
       type: String,
-      required: 'Leave your idee',
+      required: 'What is your Idee?',
       minlength: 1,
       maxlength: 50
     },
@@ -28,10 +28,10 @@ const ideeSchema = new Schema(
   }
 );
 
-ideeSchema.virtual('IdeereplyCount').get(function() {
+ideeSchema.virtual('replyCount').get(function() {
   return this.replys.length;
 });
 
-const Idee = model('idee', ideeSchema);
+const Idee = model('Idee', ideeSchema);
 
 module.exports = Idee;

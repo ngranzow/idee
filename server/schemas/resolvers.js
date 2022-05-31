@@ -13,7 +13,7 @@ const resolvers = {
                     .select('-__v -password')
                     .populate('idees')
                     .populate('friends')
-                    .populate('community');
+                    .populate('communities');
 
                 return userData;
             }
@@ -36,17 +36,17 @@ const resolvers = {
         users: async () => {
             return User.find()
                 .select('-__v -password')
-                .populate('community')
+                .populate('idees')
                 .populate('friends')
-                .populate('idees');
+                .populate('communities');
         },
         //Find one User by Username
         user: async (parent, { username }) => {
             return User.findOne({ username })
                 .select('-__v -password')
-                .populate('community')
+                .populate('idees')
                 .populate('friends')
-                .populate('idees');
+                .populate('communities');
         },
     },
 
@@ -130,9 +130,9 @@ const resolvers = {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { friends: communityID } },
+                    { $addToSet: { communities: communityID } },
                     { new: true }
-                ).populate('community');
+                ).populate('communities');
 
                 return updatedUser;
             }

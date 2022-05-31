@@ -9,6 +9,7 @@ const typeDefs = gql`
     friendCount: Int
     idees: [Idee]
     friends: [User]
+    communities: [Community]
   }
 
   type Idee {
@@ -32,6 +33,23 @@ const typeDefs = gql`
       communityname: String
       createdAt: String
       username: String
+      connunityIdees: [CommunityIdee]
+  }
+
+  type CommunityIdee {
+    _id: ID
+    communityIdeeText: String
+    createdAt: String
+    username: String
+    communityReplyCount: Int
+    communityReplys: [CommunityReply]
+  }
+
+  type CommunityReply {
+    _id: ID
+    communityReplyBody: String
+    createdAt: String
+    username: String
   }
 
   type Auth {
