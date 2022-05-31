@@ -24,8 +24,8 @@ const Header = () => {
                         </>
                     ) : (
                         <>
-                            <Link to="/login">Login</Link>
-                            <Link to="/signup">Signup</Link>
+                            <Link to="/login"><h2>Login</h2></Link>
+                            <Link to="/signup"><h2>Signup</h2></Link>
                         </>
                     )}
                 </nav>
