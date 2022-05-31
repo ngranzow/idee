@@ -71,7 +71,7 @@ const typeDefs = gql`
     addIdee(ideeText: String!): Idee
     addReply(ideeId: ID!, replyBody: String!): Idee
     addFriend(friendId: ID!): User
-    addCommunity(communityID: ID!): Community
+    addCommunity(communityName: String!): Community
   }
 `;
 
