@@ -3,9 +3,11 @@ const dateFormat = require('../utils/dateFormat');
 
 const communitySchema = new Schema(
     {
-        communityname: {
+        communityName: {
             type: String,
-            required: 'Leave your community',
+            required: true,
+            unique: true,
+            trim: true,
             minlength: 1,
             maxlength: 20
         },

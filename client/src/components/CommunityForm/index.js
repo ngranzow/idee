@@ -1,38 +1,34 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_IDEE } from '../../utils/mutations';
-import { QUERY_IDEES, QUERY_ME } from '../../utils/queries';
+import { ADD_COMMUNITY } from '../../utils/mutations';
+import { QUERY_COMMUNITIES, QUERY_ME } from '../../utils/queries';
 
-const IdeeForm = () => {
-    const [ideeText, setText] = useState('');
+const CommunityForm = () => {
+    const [communityName, setName] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
-    const [addIdee, { error }] = useMutation(ADD_IDEE, {
-        update(cache, { data: { addIdee } }) {
-
-            // could potentially not exist yet, so wrap in a try/catch
+    const [addCommunity, { error }] = useMutation(ADD_COMMUNITY, {
+        update(cache, { data: { addCommunity } }) {
             try {
-                // update me array's cache
-                const { me } = cache.readQuery({ query: QUERY_ME });
+                const { me } = cache.readQuery({ query: QUERY_ME});
                 cache.writeQuery({
                     query: QUERY_ME,
-                    data: { me: { ...me, idees: [...me.idees, addIdee] } },
+                    data: { me: { ...me, communities: [...me.communities, addCommunity] } },
                 });
             } catch (e) {
-                console.warn("First thought insertion by user!")
+                console.warn("First community insertion by user!")
             }
 
-            // update thought array's cache
-            const { idees } = cache.readQuery({ query: QUERY_IDEES });
+            const { communities } = cache.readQuery({ query: QUERY_COMMUNITIES });
             cache.writeQuery({
-                query: QUERY_IDEES,
-                data: { idees: [addIdee, ...idees] },
+                query: QUERY_COMMUNITIES,
+                data: { communities: [...addCommunity, ...communities] },
             });
         }
     });
 
     const handleChange = event => {
-        if (event.target.value.length <= 280) {
-            setText(event.target.value);
+        if (event.target.value.length <= 20) {
+            setName(event.target.value);
             setCharacterCount(event.target.value.length);
         }
     };
@@ -42,23 +38,22 @@ const IdeeForm = () => {
 
         try {
             // add thought to database
-            await addIdee({
-                variables: { ideeText }
+            await addCommunity({
+                variables: { communityName }
             });
 
             // clear form value
-            setText('');
+            setName('');
             setCharacterCount(0);
         } catch (e) {
             console.error(e);
         }
     };
 
-
     return (
         <div>
-            <p className={`m-0 ${characterCount === 50 || error ? 'text-error' : ''}`}>
-                Character Count: {characterCount}/50
+            <p className={`m-0 ${characterCount === 20 || error ? 'text-error' : ''}`}>
+                Character Count: {characterCount}/20
                 {error && <span className="ml-2">Something went wrong...</span>}
             </p>
             <form
@@ -66,8 +61,8 @@ const IdeeForm = () => {
                 onSubmit={handleFormSubmit}
             >
                 <textarea
-                    placeholder="What is your Idee?"
-                    value={ideeText}
+                    placeholder="Create a community"
+                    value={communityName}
                     className="form-input col-12 col-md-9"
                     onChange={handleChange}
                 ></textarea>
@@ -77,6 +72,6 @@ const IdeeForm = () => {
             </form>
         </div>
     );
-};
+}
 
-export default IdeeForm;
+export default CommunityForm;
