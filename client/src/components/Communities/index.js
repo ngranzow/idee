@@ -1,20 +1,33 @@
 import { Link } from 'react-router-dom';
 
-const Communities = ({ username, communities }) => {
-    if (!communities || !communities.length) {
-        return <p className="bg-dark text-light p-3">{username}, you have not created any communities!</p>;
+const Communities = ({ communities, title }) => {
+    if (!communities.length) {
+        return <h3>No communities yet!</h3>;
     }
 
     return (
         <div>
-            <h5>
-                {username}'s {communities}
-            </h5>
-            {communities.map(community => (
-                <button className="btn w-100 display-block mb-2" key={community._id}>
-                    <Link to={`/community/${community.communityName}`}>{community.communityName}</Link>
-                </button>
-            ))}
+            <h3>{title}</h3>
+            {communities &&
+                communities.map(community => (
+                    <div key={community._id} className="card mb-3">
+                        <p className="card-header">
+                            <Link
+                                to={`/youridee/${community.username}`}
+                                style={{ fontWeight: 700 }}
+                                className="text-light"
+                            >
+                                {community.username}
+                            </Link>{' '}
+                            Community on {community.createdAt}
+                        </p>
+                        <div className="card-body">
+                            <Link to={`/community/${community.communityName}`}>
+                                <p>{community.communityName}</p>
+                            </Link>
+                        </div>
+                    </div>
+                ))}
         </div>
     );
 };

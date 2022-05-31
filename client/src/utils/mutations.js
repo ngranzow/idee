@@ -83,14 +83,14 @@ export const REMOVE_FRIEND = gql`
 `;
 
 export const ADD_COMMUNITY = gql`
-  mutation addCommunity($id: ID!) {
-    addCommunity(communityId: $id) {
+  mutation addCommunity($communityName: String!) {
+    addCommunity(communityName: $communityName) {
       _id
+      communityName
+      createdAt
       username
-      communities {
+      communityIdees {
         _id
-        communityName
-        username
       }
     }
   }

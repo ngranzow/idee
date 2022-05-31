@@ -147,20 +147,20 @@ export const QUERY_COMMUNITIES = gql`
   query communities($communityName: String) {
       communities(communityName: $communityName) {
         _id
-          communityName
+        communityName
+        createdAt
+        communityIdees {
+          _id
+          communityIdeeText
           createdAt
-          communityIdees {
+          communityReplyCount
+          communityReplys {
             _id
-            communityIdeeText
             createdAt
-            communityReplyCount
-            communityReplys {
-              _id
-              createdAt
-              communityReplyBody
-              username
-            }
+            communityReplyBody
+            username
           }
+        }
       }
   }
 `
