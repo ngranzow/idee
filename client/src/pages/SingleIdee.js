@@ -33,7 +33,7 @@ const SingleIdee = (props) => {
         </div>
       </div>
       {idee.replyCount > 0 && <IdeereplyList replys={idee.replys} />}
-      {Auth.loggedIn() && <IdeereplyForm replyId={idee._id} />}
+      {Auth.loggedIn() && <IdeereplyForm ideeId={idee._id} />}
     </div>
   );
 };

@@ -106,11 +106,11 @@ function App() {
                 element={<YourIdee />}
               />
               <Route
-                path="/idee:id"
+                path="/idee/:id"
                 element={<SingleIdee />}
               />
               <Route
-                path="/community"
+                path="/community/:communityName"
                 element={<Community />}
               />
               <Route

@@ -4,9 +4,10 @@ import Idees from '../components/Idees';
 import Communities from '../components/Communities';
 import IdeeForm from '../components/IdeeForm';
 import FriendList from '../components/FriendList';
+import CommunityForm from '../components/CommunityForm';
 
 import { useQuery, useMutation } from '@apollo/client';
-import { ADD_FRIEND, ADD_COMMUNITY } from '../utils/mutations';
+import { ADD_FRIEND } from '../utils/mutations';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
@@ -20,7 +21,6 @@ import { useMediaQuery } from '@chakra-ui/media-query';
 const YourIdee = (props) => {
   const { username: userParam } = useParams();
   const [addFriend] = useMutation(ADD_FRIEND);
-  const [addCommunity] = useMutation(ADD_COMMUNITY);
 
   //MediaQuery
   const [isNotSmallerScreen] = useMediaQuery("(min-width:600px)");
@@ -33,7 +33,7 @@ const YourIdee = (props) => {
 
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getYourIdee().data.username === userParam) {
-    return <Navigate to="/youridee:username" />;
+    return <Navigate to="/youridee/:username" />;
   }
 
   if (loading) {
@@ -59,16 +59,6 @@ const YourIdee = (props) => {
     }
   };
 
-  const handleCommunityClick = async () => {
-    try {
-      await addCommunity({
-        variables: { id: user._id }
-      });
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   return (
     
     <div>
@@ -82,9 +72,6 @@ const YourIdee = (props) => {
           <div>
             <button className="btn ml-auto" onClick={handleFriendClick}>
               Add Friend
-            </button>
-            <button className="btn ml-auto" onClick={handleCommunityClick}>
-              Add Community
             </button>
           </div>
         )}
@@ -109,6 +96,7 @@ const YourIdee = (props) => {
         </div>
       </div>
       <div className="mb-3">{!userParam && <IdeeForm />}</div>
+      <div className="mb-3">{!userParam && <CommunityForm />}</div>
     </div>
   );
 };

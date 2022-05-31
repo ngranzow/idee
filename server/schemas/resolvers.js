@@ -1,5 +1,5 @@
 //CONST
-const { User, Idee } = require('../models');
+const { User, Idee, Community } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -126,15 +126,17 @@ const resolvers = {
         },
 
         //ADD COMMUNITY
-        addCommunity: async (parent, { communityID }, context) => {
+        addCommunity: async (parent, args, context) => {
             if (context.user) {
-                const updatedUser = await User.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { $addToSet: { communities: communityID } },
-                    { new: true }
-                ).populate('communities');
+                const community = await Community.create({ ...args, username: context.user.username });
 
-                return updatedUser;
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { communities: community._id } },
+                    { new: true }
+                );
+
+                return community;
             }
 
             throw new AuthenticationError('You need to be logged in!');
