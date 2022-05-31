@@ -20,14 +20,14 @@ const Idees = ({ idees, title }) => {
                             >
                                 {idee.username}
                             </Link>{' '}
-                            idee on {idee.createdAt}
+                            Idee on {idee.createdAt}
                         </p>
                         <div className="card-body">
                             <Link to={`/idee/${idee._id}`}>
                                 <p>{idee.ideeText}</p>
                                 <p className="mb-0">
-                                    Replys: {idee} || Click to{' '}
-                                    {idee ? 'see' : 'start'} the discussion!
+                                    Replys: {idee.replyCount} || Click to{' '}
+                                    {idee.replyCount ? 'see' : 'start'} the replys!
                                 </p>
                             </Link>
                         </div>
