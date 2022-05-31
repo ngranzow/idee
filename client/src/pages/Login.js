@@ -36,7 +36,8 @@ const Login = (props) => {
     <main className='flex-row justify-center mb-4'>
       <div className='col-12 col-md-6'>
         <div className='card'>
-          <h4 className='card-header'>Login</h4>
+          <h4 className='card-header'>Login Below</h4>
+          <h5>Please use your email to login.</h5>
           <div className='card-body'>
             <form onSubmit={handleFormSubmit}>
               <input
