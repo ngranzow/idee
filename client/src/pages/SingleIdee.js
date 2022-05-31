@@ -1,10 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { QUERY_IDEE } from '../utils/queries';
+
 import IdeereplyList from '../components/IdeereplyList'
 import IdeereplyForm from '../components/IdeereplyForm';
+
 import Auth from '../utils/auth';
+import { useQuery } from '@apollo/client';
+import { QUERY_IDEE } from '../utils/queries';
 
 const SingleIdee = (props) => {
   const { id: ideeId } = useParams();
@@ -32,7 +34,9 @@ const SingleIdee = (props) => {
           <p>{idee.ideeText}</p>
         </div>
       </div>
-      {idee.replyCount > 0 && <IdeereplyList replys={idee.replys} />}
+      {idee.replyCount > 0 && (
+      <IdeereplyList replys={idee.replys} />
+    )}
       {Auth.loggedIn() && <IdeereplyForm replyId={idee._id} />}
     </div>
   );
