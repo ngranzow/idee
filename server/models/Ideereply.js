@@ -1,11 +1,11 @@
-const { Schema, model } = require('mongoose');
+const { Schema } = require('mongoose');
 
 const replySchema = new Schema(
   {
     replyBody: {
       type: String,
       required: true,
-      maxlength: 280
+      maxlength: 50
     },
     username: {
       type: String,

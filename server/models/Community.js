@@ -26,7 +26,7 @@ const communitySchema = new Schema(
     }
 );
 
-Community.virtual('communityCount').get(function () {
+communitySchema.virtual('communityCount').get(function () {
     return this.communityname.length;
 })
 
