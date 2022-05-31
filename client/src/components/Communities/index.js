@@ -19,7 +19,7 @@ const Communities = ({ communities, title }) => {
                             >
                                 {community.username}
                             </Link>{' '}
-                            Community on {community.createdAt}
+                            Community created on {community.createdAt}
                         </p>
                         <div className="card-body">
                             <Link to={`/community/${community.communityName}`}>
