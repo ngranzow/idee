@@ -3,7 +3,7 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //CHAKRA
-import {Flex, Vstack, Heading} from '@chakra-ui/layout'
+import {Flex, VStack, Heading} from '@chakra-ui/layout'
 import {IconButton} from '@chakra-ui/button'
 import {FaSun, FaMoon, FaHouseUser, FaUser, FaUserFriends} from 'react-icons/fa'
 
