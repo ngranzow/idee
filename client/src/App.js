@@ -3,7 +3,9 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //CHAKRA
-import {Flex, VStack, Heading} from '@chakra-ui/layout'
+import { extendTheme, ChakraProvider } from '@chakra-ui/react'
+import {useColorMode} from '@chakra-ui/color-mode'
+import {Flex, VStack, Heading, Spacer} from '@chakra-ui/layout'
 import {IconButton} from '@chakra-ui/button'
 import {FaSun, FaMoon, FaHouseUser, FaUser, FaUserFriends} from 'react-icons/fa'
 
@@ -48,7 +50,7 @@ function App() {
     <ApolloProvider client={client}>
 
         <ChakraProvider>
-        <Vstack p={5}>
+        <VStack p={5}>
 
           <Flex w="100%">
 
@@ -72,10 +74,12 @@ function App() {
           </Flex>   
 
           <Header></Header>
-          <Social></Social>
-          <Profile></Profile>
+          <Home></Home>
+          <Login></Login>
+          <Signup></Signup>
+          <YourIdee></YourIdee>
 
-        </Vstack>
+        </VStack>
 
         <App />
         </ChakraProvider>
