@@ -30,10 +30,10 @@ const typeDefs = gql`
 
   type Community {
       _id: ID
-      communityname: String
+      communityName: String
       createdAt: String
       username: String
-      connunityIdees: [CommunityIdee]
+      communityIdees: [CommunityIdee]
   }
 
   type CommunityIdee {

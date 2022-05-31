@@ -42,61 +42,25 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      communities {
-        _id
-        communityname
-      }
       idees {
         _id
         ideeText
         createdAt
         replyCount
       }
+      friendCount
+      friends {
+        _id
+        username
+      }
+      communities {
+        _id
+        communityName
+        createdAt
+      }
     }
   }
 `;
-
-export const QUERY_COMMUNITY = gql`
-  query community($communityname: String!) {
-      community(communityname: $communityname) {
-          _id
-          communityname
-          idees {
-            _id
-            ideeText
-            createdAt
-            replyCount
-            replys {
-                _id
-                createdAt
-                username
-                replyBody
-              }
-          }
-      }
-  }
-`
-
-export const QUERY_COMMUNITIES = gql`
-  query communities($communityname: String) {
-      communities(communityname: $communityname) {
-        _id
-        communityname
-        idees {
-          _id
-          ideeText
-          createdAt
-          replyCount
-          replys {
-              _id
-              createdAt
-              username
-              replyBody
-            }
-        }
-      }
-  }
-`
 
 export const QUERY_ME = gql`
   {
@@ -104,6 +68,11 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      friendCount
+      friends {
+        _id
+        username
+      }
       idees {
         _id
         ideeText
@@ -118,7 +87,20 @@ export const QUERY_ME = gql`
       }
       communities {
         _id
-        communityname
+        communityName
+        createdAt
+        communityIdees {
+          _id
+          communityIdeeText
+          createdAt
+          communityReplyCount
+          communityReplys {
+            _id
+            createdAt
+            communityReplyBody
+            username
+          }
+        }
       }
     }
   }
@@ -130,10 +112,55 @@ export const QUERY_ME_BASIC = gql`
       _id
       username
       email
-      communities {
+      friendCount
+      friends {
         _id
-        communityname
+        username
       }
     }
   }
 `;
+
+export const QUERY_COMMUNITY = gql`
+  query community($communityName: String!) {
+      community(communityName: $communityName) {
+          _id
+          communityName
+          createdAt
+          communityIdees {
+            _id
+            communityIdeeText
+            createdAt
+            communityReplyCount
+            communityReplys {
+              _id
+              createdAt
+              communityReplyBody
+              username
+            }
+          }
+      }
+  }
+`
+
+export const QUERY_COMMUNITIES = gql`
+  query communities($communityName: String) {
+      communities(communityName: $communityName) {
+        _id
+          communityName
+          createdAt
+          communityIdees {
+            _id
+            communityIdeeText
+            createdAt
+            communityReplyCount
+            communityReplys {
+              _id
+              createdAt
+              communityReplyBody
+              username
+            }
+          }
+      }
+  }
+`
