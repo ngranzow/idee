@@ -10,10 +10,20 @@ import { ADD_FRIEND, ADD_COMMUNITY } from '../utils/mutations';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 
+//CHAKRA UI
+import React from 'react'
+import { useMediaQuery } from '@chakra-ui/media-query';
+//import { Box, Flex, Heading, Text } from '@chakra-ui/layout';
+//import Icon from '@chakra-ui/icon';
+//import { DiCodeigniter, DiAndroid, DiWebplatform } from 'react-icons/di'
+
 const YourIdee = (props) => {
   const { username: userParam } = useParams();
   const [addFriend] = useMutation(ADD_FRIEND);
   const [addCommunity] = useMutation(ADD_COMMUNITY);
+
+  //MediaQuery
+  const [isNotSmallerScreen] = useMediaQuery("(min-width:600px)");
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
@@ -60,7 +70,9 @@ const YourIdee = (props) => {
   };
 
   return (
+    
     <div>
+
       <div className="flex-row mb-3">
         <h2 className="bg-dark text-secondary p-3 display-inline-block">
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.

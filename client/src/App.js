@@ -3,7 +3,7 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //CHAKRA
-import { extendTheme, ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 import {useColorMode} from '@chakra-ui/color-mode'
 import {Flex, VStack, Heading, Spacer} from '@chakra-ui/layout'
 import {IconButton} from '@chakra-ui/button'
