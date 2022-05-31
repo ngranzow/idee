@@ -13,17 +13,17 @@ import Auth from '../utils/auth';
 
 //CHAKRA UI
 import React from 'react'
-import { useMediaQuery } from '@chakra-ui/media-query';
+//import { useMediaQuery } from '@chakra-ui/media-query';
 //import { Box, Flex, Heading, Text } from '@chakra-ui/layout';
 //import Icon from '@chakra-ui/icon';
 //import { DiCodeigniter, DiAndroid, DiWebplatform } from 'react-icons/di'
 
 const YourIdee = (props) => {
+  //MediaQuery - Update CHAKRA 
+  //const [isNotSmallerScreen] = useMediaQuery("(min-width:600px)");
+
   const { username: userParam } = useParams();
   const [addFriend] = useMutation(ADD_FRIEND);
-
-  //MediaQuery
-  const [isNotSmallerScreen] = useMediaQuery("(min-width:600px)");
 
   const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
     variables: { username: userParam },
