@@ -57,6 +57,7 @@ const IdeeForm = () => {
 
     return (
         <div>
+            <h4>Please use the following below to submit your own idee!</h4>
             <p className={`m-0 ${characterCount === 50 || error ? 'text-error' : ''}`}>
                 Character Count: {characterCount}/50
                 {error && <span className="ml-2">Something went wrong...</span>}
@@ -71,7 +72,7 @@ const IdeeForm = () => {
                     className="form-input col-12 col-md-9"
                     onChange={handleChange}
                 ></textarea>
-                <button className="btn col-12 col-md-3" type="submit">
+                <button className="btn col-12 col-md-9" type="submit">
                     Submit
                 </button>
             </form>
