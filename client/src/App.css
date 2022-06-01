@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.visible-scrollbar {
+  display: block;
+  width: 10em;
+  overflow: auto;
+  height: 2em;
+}

@@ -59,9 +59,16 @@ code {
   font-size: 40px;
 }
 
+.visible-scrollbar {
+  margin: auto;
+  display: block;
+  width: 25vh;
+  overflow-y: scroll;
+  overflow: auto;
+  height: 25vh;
+}
+
 .idee-form1 {
   background-color: #D0EDFA;
 }
-
-
 
