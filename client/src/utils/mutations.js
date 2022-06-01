@@ -129,7 +129,7 @@ export const ADD_COMMUNITYIDEE = gql`
 `
 
 export const ADD_COMMUNIYREPLY = gql`
-  mutation addCommunityReply(communityName: String!, communityIdeeId: ID!, communityReplyBody: String!) {
+  mutation addCommunityReply($communityName: String!, $communityIdeeId: ID!, $communityReplyBody: String!) {
     addCommunityIdee(communityName: $communityName, communityIdeeId: $communityIdeeId, communityReplyBody: $communityReplyBody) {
       communityName
       communityIdees {
