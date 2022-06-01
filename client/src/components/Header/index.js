@@ -4,10 +4,10 @@ import Auth from '../../utils/auth';
 //CHAKRA
 import {useColorMode} from '@chakra-ui/color-mode'
 import {useMediaQuery} from '@chakra-ui/media-query'
-import { Stack, Flex, Box, Text, Circle} from '@chakra-ui/layout';
+import { Stack, VStack, Flex, Box, Text, Circle} from '@chakra-ui/layout';
 import { Button, Image } from '@chakra-ui/react'
 import { IconButton } from '@chakra-ui/button'
-import { FaHouseUser } from 'react-icons/fa'
+import { FaHouseUser, FaUser } from 'react-icons/fa'
 
 import logo from '../../Images/logo.png';
 
@@ -58,17 +58,21 @@ const Header = () => {
             </Flex>
 
         </Stack>
-
+        <VStack p={5}>
             <div className="container flex-row justify-space-between-lg justify-center align-center">
+                
+                <Flex w="100%">
                 <Link to="/"><IconButton ml={10} size="lg" icon={<FaHouseUser />} isRound="true">
-              </IconButton>
+                </IconButton>
                 </Link>
 
                 <nav className="text-center">
                     {Auth.loggedIn() ? (
                         <>
-                            <Link to="/youridee">My Idees</Link>
-                            <a href="/" onClick={logout}><Button mt={4} size="lg" colorScheme="blue" >Log out</Button>
+                            <Link to="/youridee"><IconButton ml={10} size="lg" icon={<FaUser />} isRound="true">
+                            </IconButton></Link>
+
+                            <a href="/" onClick={logout}><Button size="sm" ml={10} colorScheme="blue" >Log out</Button>
                             </a>
                         </>
                     ) : (
@@ -80,7 +84,9 @@ const Header = () => {
                         </>
                     )}
                 </nav>
+                </Flex>
             </div>
+            </VStack>
         </header>
     );
 };
