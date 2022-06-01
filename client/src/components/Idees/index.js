@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Text } from '@chakra-ui/react'
 
 const Idees = ({ idees, title }) => {
     if (!idees.length) {
@@ -24,11 +25,11 @@ const Idees = ({ idees, title }) => {
                         </p>
                         <div className="card-body">
                             <Link to={`/idee/${idee._id}`}>
-                                <p>{idee.ideeText}</p>
-                                <p className="mb-0">
+                                <Text>{idee.ideeText}</Text>
+                                <Text as= 'u' className="mb-0">
                                     Replys: {idee.replyCount} || Click to{' '}
                                     {idee.replyCount ? 'see' : 'start'} the replys!
-                                </p>
+                                </Text>
                             </Link>
                         </div>
                     </div>

@@ -3,6 +3,9 @@ import { useMutation } from '@apollo/client';
 import { ADD_IDEE } from '../../utils/mutations';
 import { QUERY_IDEES, QUERY_ME } from '../../utils/queries';
 import { Textarea } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Box } from "@chakra-ui/react"
+
 const IdeeForm = () => {
     const [ideeText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
@@ -56,10 +59,10 @@ const IdeeForm = () => {
 
 
     return (
-        <div>
-            <h4>Please use the following below to submit your own idee!</h4>
+        <Box m={3}>
+            <h3>Please use the following below to submit your own idee!</h3>
             <p className={`m-0 ${characterCount === 50 || error ? 'text-error' : ''}`}>
-                Character Count: {characterCount}/50
+                (Character Count: {characterCount}/50)
                 {error && <span className="ml-2">Something went wrong...</span>}
             </p>
             <form
@@ -69,14 +72,16 @@ const IdeeForm = () => {
                 <Textarea
                     placeholder="What is your Idee?"
                     value={ideeText}
-                    className="form-input col-12 col-md-9"
                     onChange={handleChange}
+                    size ='sm'
+                    colorScheme='white'
                 />
-                <button className="btn col-12 col-md-9" type="submit">
+                <Button 
+                type="submit">
                     Submit
-                </button>
+                </Button>
             </form>
-        </div>
+        </Box>
     );
 };
 

@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_COMMUNITYIDEE } from '../../utils/mutations';
+import { Textarea } from '@chakra-ui/react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Box } from "@chakra-ui/react"
 
 const CommunityIdeeForm = ({ communityName }) => {
     const [communityIdeeText, setText] = useState('');
@@ -33,7 +36,7 @@ const CommunityIdeeForm = ({ communityName }) => {
     };
 
     return (
-        <div>
+        <Box m={3}>
             <p
                 className={`m-0 ${characterCount === 50 || error ? 'text-error' : ''}`}
             >
@@ -44,20 +47,20 @@ const CommunityIdeeForm = ({ communityName }) => {
                 className="flex-row justify-center justify-space-between-md align-stretch"
                 onSubmit={handleFormSubmit}
             >
-                <textarea
+                <Textarea
                     placeholder="Leave a reaction to this thought..."
                     value={communityIdeeText}
                     className="form-input col-12 col-md-9"
                     onChange={handleChange}
-                ></textarea>
+                ></Textarea>
 
-                <button className="btn col-12 col-md-3" type="submit">
+                <Button className="btn col-12 col-md-3" type="submit">
                     Submit
-                </button>
+                </Button>
             </form>
 
             {error && <div>Something went wrong...</div>}
-        </div>
+        </Box>
     );
 };
 
