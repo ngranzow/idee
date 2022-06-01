@@ -1,15 +1,13 @@
 import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
-//LINKS
-import Login from '../../pages/Login';
-import Signup from '../../pages/Signup';
-
 //CHAKRA
 import {useColorMode} from '@chakra-ui/color-mode'
 import {useMediaQuery} from '@chakra-ui/media-query'
-import { Stack, Flex, Box, Text, Spacer} from '@chakra-ui/layout';
+import { Stack, Flex, Box, Text, Circle} from '@chakra-ui/layout';
 import { Button, Image } from '@chakra-ui/react'
+import { IconButton } from '@chakra-ui/button'
+import { FaHouseUser } from 'react-icons/fa'
 
 import logo from '../../Images/logo.png';
 
@@ -45,11 +43,7 @@ const Header = () => {
                         </Text>
 
                         <Text color={isDark ? "gray.200" : "gray.500"}> The Social Media Platform for Free Speech. Share your    </Text>
-
                         
-                        <Button mt={4} size="lg" colorScheme="blue" OnClick={Login}>Log In</Button>
-                        <Spacer></Spacer>
-                        <Button mt={4} size="lg" colorScheme="blue" OnClick={Signup}>Sign Up</Button>
                         
                     </Box>
 
@@ -57,28 +51,32 @@ const Header = () => {
                         mb={isNotSmallerScreen ? "0" :"12"} borderRadius='full'
                         backgroundColor="transparent" boxShadow="1g"
                         boxSize="300px" src={logo} />
+                    
+                    <Circle position="absolute" bg="blue.100" opacity="0.1"
+                w="300px" h="300px" alignSelf="flex-end" />
 
             </Flex>
 
         </Stack>
 
             <div className="container flex-row justify-space-between-lg justify-center align-center">
-                <Link to="/">
-                    <h1>Idee</h1>
+                <Link to="/"><IconButton ml={10} size="lg" icon={<FaHouseUser />} isRound="true">
+              </IconButton>
                 </Link>
 
                 <nav className="text-center">
                     {Auth.loggedIn() ? (
                         <>
                             <Link to="/youridee">My Idees</Link>
-                            <a href="/" onClick={logout}>
-                                Logout
+                            <a href="/" onClick={logout}><Button mt={4} size="lg" colorScheme="blue" >Log out</Button>
                             </a>
                         </>
                     ) : (
                         <>
-                            <Link to="/login">Login</Link>
-                            <Link to="/signup">Signup</Link>
+                        <Box alignSelf='center' mt={isNotSmallerScreen ? "0" : 16} align='flex-start'>
+                            <Link to="/login"><Button mt={4} size="sm" colorScheme="blue" >Log In</Button></Link>
+                            <Link to="/signup"><Button mt={4} size="sm" colorScheme="blue" >Sign Up</Button></Link>
+                        </Box>
                         </>
                     )}
                 </nav>

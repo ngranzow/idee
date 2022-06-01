@@ -7,7 +7,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { useColorMode } from '@chakra-ui/color-mode'
 import { Flex, VStack, Heading, Spacer } from '@chakra-ui/layout'
 import { IconButton } from '@chakra-ui/button'
-import { FaSun, FaMoon, FaHouseUser, FaUser, FaUserFriends } from 'react-icons/fa'
+import { FaSun, FaMoon,  FaUser, FaUserFriends } from 'react-icons/fa'
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -61,9 +61,6 @@ function App() {
 
               <Spacer></Spacer>
 
-              <IconButton ml={8} icon={<FaHouseUser />} isRound="true" onClick={<Home />}>
-              </IconButton>
-
               <IconButton ml={8} icon={<FaUser />} isRound="true" onClick={<Route
                   path="/youridee"
                   element={<YourIdee />}
@@ -73,7 +70,7 @@ function App() {
               <IconButton ml={8} icon={<FaUserFriends />} isRound="true" onClick={Community}>
               </IconButton>
 
-              <IconButton ml={4} icon={isDark ? <FaSun /> : <FaMoon />} isRound="true" onClick={toggleColorMode}>
+              <IconButton ml={4} size="sm" icon={isDark ? <FaSun /> : <FaMoon />} isRound="true" onClick={toggleColorMode}>
               </IconButton>
 
             </Flex>
