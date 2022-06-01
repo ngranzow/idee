@@ -1,19 +1,19 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_IDEES } from '../utils/queries';
-import Idees from '../components/Idees';
-import IdeeForm from '../components/IdeeForm';
+import { QUERY_COMMUNITY } from '../utils/queries';
+import CommunityIdeeForm from '../components/CommunityIdeeForm';
+import CommunityIdeeList from '../components/CommunityIdeeList';
 import Auth from '../utils/auth';
 
-const SingleThought = (props) => {
-  const { id: ideeId } = useParams();
+const Community = (props) => {
+  const { communityName: communityName } = useParams();
 
-  const { loading, data } = useQuery(QUERY_IDEES, {
-    variables: { id: ideeId }
+  const { loading, data } = useQuery(QUERY_COMMUNITY, {
+    variables: { communityName: communityName }
   });
 
-  const idee = data?.idee || {};
+  const community = data?.community || {};
 
   if (loading) {
     return <div>Loading...</div>;
@@ -24,18 +24,18 @@ const SingleThought = (props) => {
       <div className="card mb-3">
         <p className="card-header">
           <span style={{ fontWeight: 700 }} className="text-light">
-            {idee.username}
+            {community.communityName}
           </span>{' '}
-          Idee on {idee.createdAt}
+          Idee on {community.createdAt}
         </p>
         <div className="card-body">
-          <p>{idee.ideeText}</p>
+          <p>{community.communityIdees}</p>
         </div>
       </div>
-      {idee.replyCount > 0 && <Idees idee={idee} />}
-      {Auth.loggedIn() && <IdeeForm ideeId={idee._id} />}
+      {community.communityReplyCount > 0 && <CommunityIdeeList communityIdeeText={communityIdeeText} />}
+      {Auth.loggedIn() && <CommunityIdeeForm communityName={community.communityName} />}
     </div>
   );
 };
 
-export default SingleThought;
+export default Community;

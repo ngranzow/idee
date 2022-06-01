@@ -149,6 +149,21 @@ const resolvers = {
             }
 
             throw new AuthenticationError('You need to be logged in!');
+        },
+
+        //ADD COMMUNITY IDEE
+        addCommunityIdee: async (parent, { communityName, communityIdeeText }, context) => {
+            if (context.user) {
+                const updatedCommunityIdee = await Community.findOneAndUpdate(
+                    { communityName: communityName },
+                    { $push: { communityIdees: { communityIdeeText, username: context.user.username } } },
+                    { new: true, runValidators: true }
+                );
+
+                return updatedCommunityIdee;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
         }
     }
 };
