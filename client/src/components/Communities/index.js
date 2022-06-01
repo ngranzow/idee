@@ -1,12 +1,31 @@
 import { Link } from 'react-router-dom';
 
+//CHAKRA
+// import React from 'react'
+// import {useMediaQuery} from '@chakra-ui/media-query'
+// import {Flex} from '@chakra-ui/layout';
+
+
+
 const Communities = ({ communities, title }) => {
+
+    //MEDIA QUERY
+    // const [isNotSmallerScreen] = useMediaQuery("(min-width:600px)");
+
     if (!communities.length) {
+        
         return <h5>Create a community!</h5>;
     }
 
+    
+
     return (
+        
         <div>
+            {/* <Flex direction={isNotSmallerScreen ? "row": "column"}
+        spacing="200px" p={isNotSmallerScreen ? "32" : "0"}
+        alignSelf="flex-start"> */}
+             
             <h3>{title}</h3>
             {communities &&
                 communities.map(community => (
@@ -28,7 +47,10 @@ const Communities = ({ communities, title }) => {
                         </div>
                     </div>
                 ))}
+                
+                {/* </Flex> */}
         </div>
+        
     );
 };
 

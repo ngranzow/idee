@@ -6,7 +6,7 @@ import FriendList from '../components/FriendList';
 //CHAKRA
 import React from 'react'
 import {useMediaQuery} from '@chakra-ui/media-query'
-import {Flex} from '@chakra-ui/layout';
+import {Flex, VStack} from '@chakra-ui/layout';
 // import { Button} from '@chakra-ui/react'
 
 
@@ -30,8 +30,8 @@ const Home = () => {
             maxWidth={{ base: "100vh", md: "130vh", lg: "130vh", xl: "130vh" }}>
         <div className="flex-row justify-center">
         
-        
-        
+        <VStack p={5}>       
+        <Flex w="100%">
           {loggedIn && (
                         
              <Flex rounded="xl" direction="column" mt={4} ml={10} bg="blue.100" opacity="0.85" h="30vh" w="30vh" justify="center">
@@ -83,8 +83,10 @@ const Home = () => {
 
             </div>
           ) : null}
-        
+          </Flex>
+        </VStack> 
         </div>
+        
         </Flex>
       </main>
     );
