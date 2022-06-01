@@ -69,8 +69,9 @@ const Home = () => {
               friends={userData.me.friends}
             />
             </div>
-            
+            {/* </Flex>
 
+            <Flex rounded="xl" direction="column" mt={4} ml={10} bg="blue.400" opacity="0.85" h="30vh" w="30vh" justify="center"> */}
             <div className="col-12 col-lg-3 mb-3">
               <Communities
                 username={userData.me.username}
@@ -78,6 +79,7 @@ const Home = () => {
               />
             </div>
             </Flex>
+
             </div>
           ) : null}
         </Flex>
