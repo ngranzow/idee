@@ -3,7 +3,8 @@
 ![License Badge](https://img.shields.io/github/license/mmeii/progressive-budget-tracker)
 
 
-This is a team builded social media App !
+IDEE (n.) an online social media platform for idea sharing without censorship 
+
 
 ## Table of Contents
 
