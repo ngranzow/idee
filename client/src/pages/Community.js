@@ -32,14 +32,14 @@ const Community = (props) => {
                     spacing="200px" p={isNotSmallerScreen ? "32" : "0"}
                     alignSelf="flex-start">
       <div className="card mb-3">
-        <p className="card-header">
+        <div className="card-header">
           <span style={{ fontWeight: 700 }} className="text-light">
             {community.communityName}
           </span>{' '}
           <Text fontSize="4xl" fontWeight="bold" bgGradient="linear(to-r, cyan.400, blue.500, purple.600)" bgClip='text'>
           Idee on {community.createdAt}
           </Text>
-        </p>
+        </div>
         <div className="card-body">
           <p>{community.communityIdees}</p>
         </div>
