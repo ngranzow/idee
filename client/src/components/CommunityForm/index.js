@@ -21,7 +21,7 @@ const CommunityForm = () => {
             const { communities } = cache.readQuery({ query: QUERY_COMMUNITIES });
             cache.writeQuery({
                 query: QUERY_COMMUNITIES,
-                data: { communities: [...addCommunity, ...communities] },
+                data: { communities: [addCommunity, ...communities] },
             });
         }
     });

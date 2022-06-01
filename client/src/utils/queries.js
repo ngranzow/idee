@@ -120,6 +120,7 @@ export const QUERY_ME_BASIC = gql`
       communities {
         _id
         communityName
+        createdAt
       }
     }
   }
