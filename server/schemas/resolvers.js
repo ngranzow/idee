@@ -48,6 +48,15 @@ const resolvers = {
                 .populate('friends')
                 .populate('communities');
         },
+        //Find many Communities
+        communities: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Community.find(params).sort({ createdAt: -1 });
+        },
+        //Find one Community
+        community: async (parent, { communityName }) => {
+            return Community.findOne({ communityName });
+        }
     },
 
     Mutation: {
