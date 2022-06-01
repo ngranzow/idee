@@ -75,7 +75,7 @@ const Header = () => {
                             {/* <Link to="/friendlist"><IconButton ml={10} size="lg" icon={<FaUserFriends />} isRound="true">
                             </IconButton></Link>
 
-                            <Link to="/communities"><IconButton ml={10} size="lg" icon={<FaPeopleCarry />} isRound="true">
+                            <Link to="/community/:communityName"><IconButton ml={10} size="lg" icon={<FaPeopleCarry />} isRound="true">
                             </IconButton></Link> */}
 
                             <a href="/" onClick={logout}><Button size="sm" ml={10} colorScheme="blue" >Log out</Button>
