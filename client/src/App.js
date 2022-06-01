@@ -46,10 +46,7 @@ function App() {
  
 
   return (
-    
-    <ApolloProvider client={client}>
-
-        <ChakraProvider>
+    <ChakraProvider>
         <VStack p={5}>
 
           <Flex w="100%">
@@ -82,9 +79,10 @@ function App() {
         </VStack>
 
         <App />
-        </ChakraProvider>
 
-      <Router>
+        <ApolloProvider client={client}>
+
+        <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
           <div className="container">
@@ -123,6 +121,7 @@ function App() {
         </div>
       </Router>
     </ApolloProvider>
+    </ChakraProvider>
 
     
   );
