@@ -26,9 +26,10 @@ const Home = () => {
   
     return (
       <main>
-        <div className="flex-row justify-center">
         <Flex direction={isNotSmallerScreen ? "row" : "column"} w="100%" 
             maxWidth={{ base: "100vh", md: "130vh", lg: "130vh", xl: "130vh" }}>
+        <div className="flex-row justify-center">
+        
         
         
           {loggedIn && (
@@ -82,8 +83,9 @@ const Home = () => {
 
             </div>
           ) : null}
-        </Flex>
+        
         </div>
+        </Flex>
       </main>
     );
   };
