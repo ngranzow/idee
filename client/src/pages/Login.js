@@ -58,7 +58,7 @@ const Login = (props) => {
                     <Flex rounded="xl" direction="column" mt={4} bg="blue.400" h="20vh" w="30vh" justify="flex-end">
                     <div className='card-body'>
 
-                    <form justify="center" onSubmit={handleFormSubmit}>
+                    <form justify="auto" onSubmit={handleFormSubmit}>
                       <input
                         className='form-input'
                         placeholder='Your email'

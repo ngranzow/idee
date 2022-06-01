@@ -75,12 +75,6 @@ function App() {
 
             </Flex>
 
-            {/* <Header></Header>
-            <Home></Home>
-            <Login></Login>
-            <Signup></Signup>
-            <YourIdee></YourIdee> */}
-
           </VStack> 
 
           <div className="flex-column justify-flex-start min-100-vh">
