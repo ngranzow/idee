@@ -7,7 +7,7 @@ import {useMediaQuery} from '@chakra-ui/media-query'
 import { Stack, VStack, Flex, Box, Text, Circle} from '@chakra-ui/layout';
 import { Button, Image } from '@chakra-ui/react'
 import { IconButton } from '@chakra-ui/button'
-import { FaHouseUser, FaUser, FaUserFriends, FaPeopleCarry } from 'react-icons/fa'
+import { FaHouseUser, FaUser } from 'react-icons/fa'
 
 import logo from '../../Images/logo.png';
 
@@ -72,11 +72,11 @@ const Header = () => {
                             <Link to="/youridee"><IconButton ml={10} size="lg" icon={<FaUser />} isRound="true">
                             </IconButton></Link>
 
-                            <Link to="/friendlist"><IconButton ml={10} size="lg" icon={<FaUserFriends />} isRound="true">
+                            {/* <Link to="/friendlist"><IconButton ml={10} size="lg" icon={<FaUserFriends />} isRound="true">
                             </IconButton></Link>
 
                             <Link to="/communities"><IconButton ml={10} size="lg" icon={<FaPeopleCarry />} isRound="true">
-                            </IconButton></Link>
+                            </IconButton></Link> */}
 
                             <a href="/" onClick={logout}><Button size="sm" ml={10} colorScheme="blue" >Log out</Button>
                             </a>
