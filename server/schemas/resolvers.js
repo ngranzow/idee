@@ -1,5 +1,5 @@
 //CONST
-const { User, Idee } = require('../models');
+const { User, Idee, Community } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -13,7 +13,7 @@ const resolvers = {
                     .select('-__v -password')
                     .populate('idees')
                     .populate('friends')
-                    .populate('community');
+                    .populate('communities');
 
                 return userData;
             }
@@ -36,18 +36,27 @@ const resolvers = {
         users: async () => {
             return User.find()
                 .select('-__v -password')
-                .populate('community')
+                .populate('idees')
                 .populate('friends')
-                .populate('idees');
+                .populate('communities');
         },
         //Find one User by Username
         user: async (parent, { username }) => {
             return User.findOne({ username })
                 .select('-__v -password')
-                .populate('community')
+                .populate('idees')
                 .populate('friends')
-                .populate('idees');
+                .populate('communities');
         },
+        //Find many Communities
+        communities: async (parent, { username }) => {
+            const params = username ? { username } : {};
+            return Community.find(params).sort({ createdAt: -1 });
+        },
+        //Find one Community
+        community: async (parent, { communityName }) => {
+            return Community.findOne({ communityName });
+        }
     },
 
     Mutation: {
@@ -60,7 +69,7 @@ const resolvers = {
             return { token, user };
         },
 
-        //Login Check 
+        //Login Check
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 
@@ -95,12 +104,12 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        //ADD REACTION
-        addReaction: async (parent, { ideeID, reactionBody }, context) => {
+        //ADD REPLY
+        addReply: async (parent, { ideeID, replyBody }, context) => {
             if (context.user) {
                 const updatedIdee = await Idee.findOneAndUpdate(
                     { _id: ideeID },
-                    { $push: { reactions: { reactionBody, username: context.user.username } } },
+                    { $push: { replys: { replyBody, username: context.user.username } } },
                     { new: true, runValidators: true }
                 );
 
@@ -126,15 +135,17 @@ const resolvers = {
         },
 
         //ADD COMMUNITY
-        addCommunity: async (parent, { communityID }, context) => {
+        addCommunity: async (parent, args, context) => {
             if (context.user) {
-                const updatedUser = await User.findOneAndUpdate(
-                    { _id: context.user._id },
-                    { $addToSet: { friends: communityID } },
-                    { new: true }
-                ).populate('community');
+                const community = await Community.create({ ...args, username: context.user.username });
 
-                return updatedUser;
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $push: { communities: community._id } },
+                    { new: true }
+                );
+
+                return community;
             }
 
             throw new AuthenticationError('You need to be logged in!');

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Idees = ({ idees, title }) => {
@@ -13,20 +14,20 @@ const Idees = ({ idees, title }) => {
                     <div key={idee._id} className="card mb-3">
                         <p className="card-header">
                             <Link
-                                to={`/profile/${idee.username}`}
+                                to={`/youridee/${idee.username}`}
                                 style={{ fontWeight: 700 }}
                                 className="text-light"
                             >
                                 {idee.username}
                             </Link>{' '}
-                            idee on {idee.createdAt}
+                            Idee on {idee.createdAt}
                         </p>
                         <div className="card-body">
                             <Link to={`/idee/${idee._id}`}>
                                 <p>{idee.ideeText}</p>
                                 <p className="mb-0">
-                                    Reactions: {idee} || Click to{' '}
-                                    {idee ? 'see' : 'start'} the discussion!
+                                    Replys: {idee.replyCount} || Click to{' '}
+                                    {idee.replyCount ? 'see' : 'start'} the replys!
                                 </p>
                             </Link>
                         </div>

@@ -13,11 +13,12 @@ const Header = () => {
                 <Link to="/">
                     <h1>Idee</h1>
                 </Link>
-
-                <nav className="text-center">
+                <h2>Let us know what your idee is!</h2>
+                <nav>
                     {Auth.loggedIn() ? (
                         <>
                             <Link to="/youridee">My Idees</Link>
+                             |<div></div>
                             <a href="/" onClick={logout}>
                                 Logout
                             </a>
@@ -25,6 +26,7 @@ const Header = () => {
                     ) : (
                         <>
                             <Link to="/login">Login</Link>
+                            <></>
                             <Link to="/signup">Signup</Link>
                         </>
                     )}

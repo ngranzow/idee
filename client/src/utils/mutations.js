@@ -24,41 +24,74 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_COMMUNITY = gql`
-  mutation addCommunity($id: ID!) {
-    addFriend(friendId: $id) {
-      _id
-      username
-      communities {
-        _id
-        communityname
-      }
-    }
-  }
-`;
-
 export const ADD_IDEE = gql`
-  mutation addThought($ideeText: String!) {
+  mutation addIdee($ideeText: String!) {
     addIdee(ideeText: $ideeText) {
       _id
       ideeText
       createdAt
       username
+      replyCount
+      replys {
+        _id
+      }
     }
   }
 `;
 
-// export const ADD_REACTION = gql`
-//   mutation addReaction($thoughtId: ID!, $reactionBody: String!) {
-//     addReaction(thoughtId: $thoughtId, reactionBody: $reactionBody) {
-//       _id
-//       reactionCount
-//       reactions {
-//         _id
-//         reactionBody
-//         createdAt
-//         username
-//       }
-//     }
-//   }
-// `;
+
+export const ADD_REPLY = gql`
+  mutation addReply($ideeId: ID!, $replyBody: String!) {
+    addReply(ideeId: $ideeId, replyBody: $replyBody) {
+      _id
+      replyCount
+      replys {
+        _id
+        replyBody
+        createdAt
+        username
+      }
+    }
+  }
+`;
+
+export const ADD_FRIEND = gql`
+  mutation addFriend($id: ID!) {
+    addFriend(friendId: $id) {
+      _id
+      username
+      friendCount
+      friends {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const REMOVE_FRIEND = gql`
+  mutation removeFriend($id: ID!) {
+    removeFriend(id: $id) {
+      _id
+      username
+      friends {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const ADD_COMMUNITY = gql`
+  mutation addCommunity($communityName: String!) {
+    addCommunity(communityName: $communityName) {
+      _id
+      communityName
+      createdAt
+      username
+      communityIdees {
+        _id
+      }
+    }
+  }
+`;

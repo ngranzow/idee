@@ -9,6 +9,7 @@ const typeDefs = gql`
     friendCount: Int
     idees: [Idee]
     friends: [User]
+    communities: [Community]
   }
 
   type Idee {
@@ -27,6 +28,30 @@ const typeDefs = gql`
     username: String
   }
 
+  type Community {
+      _id: ID
+      communityName: String
+      createdAt: String
+      username: String
+      communityIdees: [CommunityIdee]
+  }
+
+  type CommunityIdee {
+    _id: ID
+    communityIdeeText: String
+    createdAt: String
+    username: String
+    communityReplyCount: Int
+    communityReplys: [CommunityReply]
+  }
+
+  type CommunityReply {
+    _id: ID
+    communityReplyBody: String
+    createdAt: String
+    username: String
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -38,6 +63,8 @@ const typeDefs = gql`
     user(username: String!): User
     idees(username: String): [Idee]
     idee(_id: ID!): Idee
+    communities(username: String): [Community]
+    community(_id: ID!): Community
   }
 
   type Mutation {
@@ -46,6 +73,9 @@ const typeDefs = gql`
     addIdee(ideeText: String!): Idee
     addReply(ideeId: ID!, replyBody: String!): Idee
     addFriend(friendId: ID!): User
+    addCommunity(communityName: String!): Community
+    addCommunityIdee(communityName: String!, communityIdeeText: String!): Community
+    addCommunityReply(communityIdeeId: ID!, communityReplyBody: String!): Community
   }
 `;
 
