@@ -105,10 +105,10 @@ const resolvers = {
         },
 
         //ADD REPLY
-        addReply: async (parent, { ideeID, replyBody }, context) => {
+        addReply: async (parent, { ideeId, replyBody }, context) => {
             if (context.user) {
                 const updatedIdee = await Idee.findOneAndUpdate(
-                    { _id: ideeID },
+                    { _id: ideeId },
                     { $push: { replys: { replyBody, username: context.user.username } } },
                     { new: true, runValidators: true }
                 );

@@ -52,6 +52,10 @@ function App() {
                 element={<Signup />}
               />
               <Route
+                path="/youridee/:username"
+                element={<YourIdee />}
+              />
+              <Route
                 path="/youridee"
                 element={<YourIdee />}
               />
