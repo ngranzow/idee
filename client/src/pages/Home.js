@@ -23,19 +23,19 @@ const Home = () => {
   const [isNotSmallerScreen] = useMediaQuery("(min-width:600px)");
 
     const loggedIn = Auth.loggedIn();
-  
+
     return (
       <main>
-        <Flex direction={isNotSmallerScreen ? "row" : "column"} w="100%" 
+        <Flex direction={isNotSmallerScreen ? "row" : "column"} w="100%"
             maxWidth={{ base: "100vh", md: "130vh", lg: "130vh", xl: "130vh" }}>
         <div className="flex-row justify-center">
-        
-        <VStack p={5}>       
+
+        <VStack p={5}>
         <Flex w="100%">
           {loggedIn && (
-                        
+
              <Flex rounded="xl" direction="column" mt={4} ml={10} bg="blue.100" opacity="0.85" h="30vh" w="30vh" justify="center">
-            <div className="col-12 mb-3">
+            <div className="col-12 mb-3 ">
               <IdeeForm />
             </div>
             </Flex>
@@ -43,19 +43,19 @@ const Home = () => {
           )}
 
           <Flex rounded="xl" direction="column" mt={4} ml={10} bg="blue.200" opacity="0.85" h="30vh" w="30vh" justify="center">
-          <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'}`}>
-          
+          <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'} idee-form1`}>
+
             {loading ? (
               <div>Loading...</div>
             ) : (
-              
+
               <Idees
                 idees={idees}
                 title= "Some Feed for Idee(s)..."
               />
 
             )}
-          
+
           </div>
           </Flex>
 
@@ -84,12 +84,12 @@ const Home = () => {
             </div>
           ) : null}
           </Flex>
-        </VStack> 
+        </VStack>
         </div>
-        
+
         </Flex>
       </main>
     );
   };
-  
+
   export default Home;
