@@ -20,15 +20,15 @@ const SingleIdee = (props) => {
   }
 
   return (
-    <div>
-      <div className="card mb-3">
-        <p className="card-header">
+    <div className="">
+      <div className="card mb-3 ">
+        <p className="card-header idee-info">
           <span style={{ fontWeight: 700 }} className="text-light">
             {idee.username}
           </span>{' '}
           idee on {idee.createdAt}
         </p>
-        <div className="card-body">
+        <div className="card-body idee-body">
           <p>{idee.ideeText}</p>
         </div>
       </div>
