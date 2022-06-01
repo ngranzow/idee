@@ -11,7 +11,7 @@ const CommunityIdeeList = ({ communityIdees }) => {
         {communityIdees &&
           communityIdees.map(communityIdee => (
             <p className="pill mb-3" key={communityIdee._id}>
-              {communityIdee.communityIdeeText} //{' '}
+              {communityIdee.communityIdeeText}/{' '}
               <Link to={`/youridee/${communityIdee.username}`} style={{ fontWeight: 700 }}>
                 {communityIdee.username} on {communityIdee.createdAt}
               </Link>
