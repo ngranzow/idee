@@ -1,13 +1,67 @@
 body {
   /* margin: 0; */
-  font-family: -apple-system, BlinkMacSystemFont, 'Georgia', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Georgia", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.profile-container {
+  background-color: grey;
+  color: aliceblue;
+  font-size: 40px;
+}
+
+.idee-list {
+  border: 2rem #E0E9E9 solid;
+  font-size: 20px;
+}
+
+.name-idee {
+  /* background-color: red; */
+
+}
+
+.friend-container {
+  background-color: #C6CCCC;
+  font-size: 20px;
+}
+
+.communities-container {
+  /* background-color: #B7FCFC; */
+  font-size: 20px;
+}
+
+.new-idee {
+  /* background-color: red; */
+  border: 2rem #ABE2FB solid;
+  font-size: 20px;
+}
+
+.new-community {
+  border: 2rem #E0E9E9 solid;
+  font-size: 20px;
+}
+
+.idee-info {
+  background-color: #def9fa;
+  font-size: 20px;
+}
+
+.idee-body {
+  border: 1rem #E0E9E9 solid;
+  font-size: 40px;
+}
+
+.idee-form1 {
+  background-color: #D0EDFA;
+}
+
+
+

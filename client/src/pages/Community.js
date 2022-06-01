@@ -1,19 +1,26 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { QUERY_IDEES } from '../utils/queries';
-import Idees from '../components/Idees';
-import IdeeForm from '../components/IdeeForm';
+import { QUERY_COMMUNITY } from '../utils/queries';
+import CommunityIdeeForm from '../components/CommunityIdeeForm';
+import CommunityIdeeList from '../components/CommunityIdeeList';
 import Auth from '../utils/auth';
 
-const SingleThought = (props) => {
-  const { id: ideeId } = useParams();
+//CHAKRA
+import {useMediaQuery} from '@chakra-ui/media-query'
+import {Flex, Text} from '@chakra-ui/layout';
 
-  const { loading, data } = useQuery(QUERY_IDEES, {
-    variables: { id: ideeId }
+const Community = (props) => {
+  const { communityName } = useParams();
+
+  //MEDIA QUERY
+  const [isNotSmallerScreen] = useMediaQuery("(min-width:600px)");
+
+  const { loading, data } = useQuery(QUERY_COMMUNITY, {
+    variables: { communityName: communityName }
   });
 
-  const idee = data?.idee || {};
+  const community = data?.community || {};
 
   if (loading) {
     return <div>Loading...</div>;
@@ -21,21 +28,31 @@ const SingleThought = (props) => {
 
   return (
     <div>
+      <Flex direction={isNotSmallerScreen ? "row": "column"}
+                    spacing="200px" p={isNotSmallerScreen ? "32" : "0"}
+                    alignSelf="flex-start">
       <div className="card mb-3">
         <p className="card-header">
           <span style={{ fontWeight: 700 }} className="text-light">
-            {idee.username}
+            {community.communityName}
           </span>{' '}
-          Idee on {idee.createdAt}
+          <Text fontSize="4xl" FontWeight="bold" bgGradient="linear(to-r, cyan.400, blue.500, purple.600)" bgClip='text'>
+          Idee on {community.createdAt}
+          </Text>
         </p>
         <div className="card-body">
-          <p>{idee.ideeText}</p>
+          <p>{community.communityIdees}</p>
         </div>
       </div>
-      {idee.replyCount > 0 && <Idees idee={idee} />}
-      {Auth.loggedIn() && <IdeeForm ideeId={idee._id} />}
+      </Flex>
+
+      <Flex rounded="xl" direction="column" mt={2} ml={20} bg="blue.300" opacity="0.85" h="30vh" w="30vh" justify="center">
+      {community.communityReplyCount > 0 && <CommunityIdeeList communityIdees={community.communityIdees} />}
+      {Auth.loggedIn() && <CommunityIdeeForm communityName={community.communityName} />}
+    </Flex>
     </div>
+    
   );
 };
 
-export default SingleThought;
+export default Community;

@@ -95,3 +95,52 @@ export const ADD_COMMUNITY = gql`
     }
   }
 `;
+
+export const REMOVE_COMMUNITY = gql`
+  mutation removeCommunity($communityName: String!) {
+    removeCommunity(communityName: $communityName) {
+      _id
+      communityName
+      createdAt
+      username
+      communityIdees {
+        _id
+      }
+    }
+  }
+`;
+
+export const ADD_COMMUNITYIDEE = gql`
+  mutation addCommunityIdee($communityName: String!, $communityIdeeText: String!) {
+    addCommunityIdee(communityName: $communityName, communityIdeeText: $communityIdeeText) {
+      communityName
+      communityIdees {
+        _id
+        communityIdeeText
+        createdAt
+        username
+        communityReplyCount
+        communityReplys {
+          _id
+        }
+      }
+    }
+  }
+`
+
+export const ADD_COMMUNIYREPLY = gql`
+  mutation addCommunityReply($communityName: String!, $communityIdeeId: ID!, $communityReplyBody: String!) {
+    addCommunityIdee(communityName: $communityName, communityIdeeId: $communityIdeeId, communityReplyBody: $communityReplyBody) {
+      communityName
+      communityIdees {
+        _id
+        communityReplys {
+          _id
+          communityReplyBody
+          createdAt
+          username
+        }
+      }
+    }
+  }
+`

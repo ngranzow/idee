@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_COMMUNITY } from '../../utils/mutations';
 import { QUERY_COMMUNITIES, QUERY_ME } from '../../utils/queries';
+import { Box, Textarea, Button, ButtoGroup } from '@chakra-ui/react'
 
 const CommunityForm = () => {
     const [communityName, setName] = useState('');
@@ -19,6 +20,7 @@ const CommunityForm = () => {
             }
 
             const { communities } = cache.readQuery({ query: QUERY_COMMUNITIES });
+            console.log(communities)
             cache.writeQuery({
                 query: QUERY_COMMUNITIES,
                 data: { communities: [addCommunity, ...communities] },
@@ -51,8 +53,8 @@ const CommunityForm = () => {
     };
 
     return (
-        <div>
-              <h4> Don't see a community that you like? Please use the following to submit your own community. </h4>
+        <Box m={3}>
+              <h3> Don't see a community that you like? Please use the following to submit your own community. </h3>
             <p className={`m-0 ${characterCount === 20 || error ? 'text-error' : ''}`}>
                 Character Count: {characterCount}/20
                 {error && <span className="ml-2">Something went wrong...</span>}
@@ -62,17 +64,17 @@ const CommunityForm = () => {
                 onSubmit={handleFormSubmit}
             >
              
-                <textarea
-                    placeholder="Create a community"
+                <Textarea
+                    placeholder="What's your community name?"
                     value={communityName}
                     className="form-input col-12 col-md-9"
                     onChange={handleChange}
-                ></textarea>
-                <button className="btn col-12 col-md-3" type="submit">
+                ></Textarea>
+                <Button className="btn col-12 col-md-3" type="submit">
                     Submit
-                </button>
+                </Button>
             </form>
-        </div>
+        </Box>
     );
 }
 
