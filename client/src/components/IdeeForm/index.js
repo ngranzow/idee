@@ -18,7 +18,7 @@ const IdeeForm = () => {
                     data: { me: { ...me, idees: [...me.idees, addIdee] } },
                 });
             } catch (e) {
-                console.warn("First thought insertion by user!")
+                console.warn("First Idee insertion by user!");
             }
 
             // update thought array's cache

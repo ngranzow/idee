@@ -29,7 +29,7 @@ const communitySchema = new Schema(
 );
 
 communitySchema.virtual('communityCount').get(function () {
-    return this.communityname.length;
+    return this.communityName.length;
 })
 
 const Community = model('Community', communitySchema);
