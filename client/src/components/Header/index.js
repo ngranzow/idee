@@ -34,11 +34,11 @@ const Header = () => {
                     alignSelf="flex-start">
                     
                     <Box alignSelf='center' mt={isNotSmallerScreen ? "0" : 16} align='flex-start'>
-                        <Text fontSize="4xl" FontWeight="semibold">
+                        <Text fontSize="4xl" fontWeight="semibold">
                             Free to 
                         </Text>
 
-                        <Text fontSize="8xl" FontWeight="bold" bgGradient="linear(to-r, cyan.400, blue.500, purple.600)" bgClip='text'>
+                        <Text fontSize="8xl" fontWeight="bold" bgGradient="linear(to-r, cyan.400, blue.500, purple.600)" bgClip='text'>
                             idee 
                         </Text>
 
