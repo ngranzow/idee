@@ -7,7 +7,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { useColorMode } from '@chakra-ui/color-mode'
 import { Flex, VStack, Heading, Spacer } from '@chakra-ui/layout'
 import { IconButton } from '@chakra-ui/button'
-import { FaSun, FaMoon, FaUserFriends } from 'react-icons/fa'
+import { FaSun, FaMoon,  } from 'react-icons/fa'
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -60,11 +60,6 @@ function App() {
                 ml="8" size="md" fontWeight='semibold' color="cyan.400">idee</Heading>
 
               <Spacer></Spacer>
-
-              
-
-              <IconButton ml={8} icon={<FaUserFriends />} isRound="true" onClick={Community}>
-              </IconButton>
 
               <IconButton ml={4} size="sm" icon={isDark ? <FaSun /> : <FaMoon />} isRound="true" onClick={toggleColorMode}>
               </IconButton>
