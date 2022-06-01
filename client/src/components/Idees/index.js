@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Text } from '@chakra-ui/react'
+import { Text, Box } from '@chakra-ui/react'
 
 const Idees = ({ idees, title }) => {
     if (!idees.length) {
@@ -8,7 +8,8 @@ const Idees = ({ idees, title }) => {
     }
 
     return (
-        <div>
+        <div class ="visible-scrollbar"
+>
             <h3>{title}</h3>
             {idees &&
                 idees.map(idee => (
