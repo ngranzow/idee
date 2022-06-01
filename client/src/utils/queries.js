@@ -117,6 +117,10 @@ export const QUERY_ME_BASIC = gql`
         _id
         username
       }
+      communities {
+        _id
+        communityName
+      }
     }
   }
 `;
@@ -144,8 +148,8 @@ export const QUERY_COMMUNITY = gql`
 `
 
 export const QUERY_COMMUNITIES = gql`
-  query communities($communityName: String) {
-      communities(communityName: $communityName) {
+  query communities($username: String) {
+      communities(username: $username) {
         _id
         communityName
         createdAt
