@@ -7,7 +7,7 @@ import CommunityIdeeList from '../components/CommunityIdeeList';
 import Auth from '../utils/auth';
 
 const Community = (props) => {
-  const { communityName: communityName } = useParams();
+  const { communityName } = useParams();
 
   const { loading, data } = useQuery(QUERY_COMMUNITY, {
     variables: { communityName: communityName }
@@ -32,7 +32,7 @@ const Community = (props) => {
           <p>{community.communityIdees}</p>
         </div>
       </div>
-      {community.communityReplyCount > 0 && <CommunityIdeeList communityIdeeText={communityIdeeText} />}
+      {community.communityReplyCount > 0 && <CommunityIdeeList communityIdees={community.communityIdees} />}
       {Auth.loggedIn() && <CommunityIdeeForm communityName={community.communityName} />}
     </div>
   );
