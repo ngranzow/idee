@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //CHAKRA
 import { ChakraProvider } from '@chakra-ui/react'
-import {useColorMode} from '@chakra-ui/color-mode'
-import {Flex, VStack, Heading, Spacer} from '@chakra-ui/layout'
-import {IconButton} from '@chakra-ui/button'
-import {FaSun, FaMoon, FaHouseUser, FaUser, FaUserFriends} from 'react-icons/fa'
+import { useColorMode } from '@chakra-ui/color-mode'
+import { Flex, VStack, Heading, Spacer } from '@chakra-ui/layout'
+import { IconButton } from '@chakra-ui/button'
+import { FaSun, FaMoon, FaHouseUser, FaUser, FaUserFriends } from 'react-icons/fa'
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -40,90 +40,93 @@ const client = new ApolloClient({
 
 function App() {
 
-   //CHAKRA - Light and Dark Modes
-   const {colorMode, toggleColorMode} = useColorMode();
-   const isDark = colorMode==="dark";
- 
+  //CHAKRA - Light and Dark Modes
+  const { colorMode, toggleColorMode } = useColorMode();
+  const isDark = colorMode === "dark";
+
 
   return (
     <ChakraProvider>
-        <VStack p={5}>
 
-          <Flex w="100%">
 
-            <Heading 
-                ml="8" size="md" fontWeight='semibold' color="cyan.400">idee</Heading>
-
-            <Spacer></Spacer>
-
-            <IconButton ml={8} icon={<FaHouseUser />} isRound="true" onClick={toggleColorMode}>
-            </IconButton>
-
-            <IconButton ml={8} icon={<FaUser />} isRound="true" onClick={toggleColorMode}>
-            </IconButton>
-
-            <IconButton ml={8} icon={<FaUserFriends />} isRound="true" onClick={toggleColorMode}>
-            </IconButton>
-
-            <IconButton ml={4} icon={isDark ? <FaSun /> : <FaMoon />} isRound="true" onClick={toggleColorMode}>
-            </IconButton>   
-
-          </Flex>   
-
-          <Header></Header>
-          <Home></Home>
-          <Login></Login>
-          <Signup></Signup>
-          <YourIdee></YourIdee>
-
-        </VStack>
-
-        <App />
-
-        <ApolloProvider client={client}>
+      <ApolloProvider client={client}>
 
         <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
-            <Routes>
-              <Route
-                path="/"
-                element={<Home />}
-              />
-              <Route
-                path="/login"
-                element={<Login />}
-              />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
-              <Route
-                path="/youridee"
-                element={<YourIdee />}
-              />
-              <Route
-                path="/idee/:id"
-                element={<SingleIdee />}
-              />
-              <Route
-                path="/community/:communityName"
-                element={<Community />}
-              />
-              <Route
-                path="*"
-                element={<NoMatch />}
-              />
-            </Routes>
+          <VStack p={5}>
+
+            <Flex w="100%">
+
+              <Heading
+                ml="8" size="md" fontWeight='semibold' color="cyan.400">idee</Heading>
+
+              <Spacer></Spacer>
+
+              <IconButton ml={8} icon={<FaHouseUser />} isRound="true" onClick={<Home />}>
+              </IconButton>
+
+              <IconButton ml={8} icon={<FaUser />} isRound="true" onClick={<Route
+                  path="/youridee"
+                  element={<YourIdee />}
+                />}>
+              </IconButton>
+
+              <IconButton ml={8} icon={<FaUserFriends />} isRound="true" onClick={Community}>
+              </IconButton>
+
+              <IconButton ml={4} icon={isDark ? <FaSun /> : <FaMoon />} isRound="true" onClick={toggleColorMode}>
+              </IconButton>
+
+            </Flex>
+
+            {/* <Header></Header>
+            <Home></Home>
+            <Login></Login>
+            <Signup></Signup>
+            <YourIdee></YourIdee> */}
+
+          </VStack> 
+
+          <div className="flex-column justify-flex-start min-100-vh">
+            <Header />
+            <div className="container">
+              <Routes>
+                <Route
+                  path="/"
+                  element={<Home />}
+                />
+                <Route
+                  path="/login"
+                  element={<Login />}
+                />
+                <Route
+                  path="/signup"
+                  element={<Signup />}
+                />
+                <Route
+                  path="/youridee"
+                  element={<YourIdee />}
+                />
+                <Route
+                  path="/idee/:id"
+                  element={<SingleIdee />}
+                />
+                <Route
+                  path="/community/:communityName"
+                  element={<Community />}
+                />
+                <Route
+                  path="*"
+                  element={<NoMatch />}
+                />
+              </Routes>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
-      </Router>
-    </ApolloProvider>
+        </Router>
+      </ApolloProvider>
     </ChakraProvider>
 
-    
+
   );
 }
 
