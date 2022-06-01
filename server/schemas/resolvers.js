@@ -120,11 +120,11 @@ const resolvers = {
         },
 
         //ADD FRIEND
-        addFriend: async (parent, { friendID }, context) => {
+        addFriend: async (parent, { friendId }, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { friends: friendID } },
+                    { $addToSet: { friends: friendId } },
                     { new: true }
                 ).populate('friends');
 
@@ -161,6 +161,21 @@ const resolvers = {
                 );
 
                 return updatedCommunityIdee;
+            }
+
+            throw new AuthenticationError('You need to be logged in!');
+        },
+
+        //ADD COMMUNITY REPLY
+        addCommunityReply: async (parent, { communityName, communityIdeeId, communityReplyBody }, context) => {
+            if (context.user) {
+                const updatedCommunityReply = await Community.findOneAndUpdate(
+                    { communityName: communityName, communityIdeeId: communityIdeeId },
+                    { $push: { communityReplys: { communityReplyBody, username: context.user.username } } },
+                    { new: true, runValidators: true }
+                );
+
+                return updatedCommunityReply;
             }
 
             throw new AuthenticationError('You need to be logged in!');
