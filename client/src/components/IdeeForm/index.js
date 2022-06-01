@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_IDEE } from '../../utils/mutations';
 import { QUERY_IDEES, QUERY_ME } from '../../utils/queries';
-
+import { Textarea } from '@chakra-ui/react'
 const IdeeForm = () => {
     const [ideeText, setText] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
@@ -66,12 +66,12 @@ const IdeeForm = () => {
                 className="flex-row justify-center justify-space-between-md align-stretch"
                 onSubmit={handleFormSubmit}
             >
-                <textarea
+                <Textarea
                     placeholder="What is your Idee?"
                     value={ideeText}
                     className="form-input col-12 col-md-9"
                     onChange={handleChange}
-                ></textarea>
+                />
                 <button className="btn col-12 col-md-9" type="submit">
                     Submit
                 </button>
