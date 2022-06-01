@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const Communities = ({ communities, title }) => {
     if (!communities.length) {
-        return <h3>No communities yet!</h3>;
+        return <h5>Create a community!</h5>;
     }
 
     return (

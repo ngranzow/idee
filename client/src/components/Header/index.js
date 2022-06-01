@@ -65,8 +65,7 @@ const Header = () => {
                 <Link to="/"><IconButton ml={10} size="lg" icon={<FaHouseUser />} isRound="true">
                 </IconButton>
                 </Link>
-
-                <nav className="text-center">
+                <nav>
                     {Auth.loggedIn() ? (
                         <>
                             <Link to="/youridee"><IconButton ml={10} size="lg" icon={<FaUser />} isRound="true">

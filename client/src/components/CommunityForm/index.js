@@ -19,9 +19,10 @@ const CommunityForm = () => {
             }
 
             const { communities } = cache.readQuery({ query: QUERY_COMMUNITIES });
+            console.log(communities)
             cache.writeQuery({
                 query: QUERY_COMMUNITIES,
-                data: { communities: [...addCommunity, ...communities] },
+                data: { communities: [addCommunity, ...communities] },
             });
         }
     });
@@ -52,6 +53,7 @@ const CommunityForm = () => {
 
     return (
         <div>
+              <h4> Don't see a community that you like? Please use the following to submit your own community. </h4>
             <p className={`m-0 ${characterCount === 20 || error ? 'text-error' : ''}`}>
                 Character Count: {characterCount}/20
                 {error && <span className="ml-2">Something went wrong...</span>}
@@ -60,6 +62,7 @@ const CommunityForm = () => {
                 className="flex-row justify-center justify-space-between-md align-stretch"
                 onSubmit={handleFormSubmit}
             >
+             
                 <textarea
                     placeholder="Create a community"
                     value={communityName}
