@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
 import { ADD_REPLY } from '../../utils/mutations';
-
+import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Textarea } from '@chakra-ui/react'
 const ReplyForm = ({ ideeId }) => {
   const [replyBody, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
@@ -45,16 +46,16 @@ const ReplyForm = ({ ideeId }) => {
         className="flex-row justify-center justify-space-between-md align-stretch"
         onSubmit={handleFormSubmit}
       >
-        <textarea
+        <Textarea
           placeholder="Leave a reply to this idee..."
           value={replyBody}
           className="form-input col-12 col-md-9"
           onChange={handleChange}
-        ></textarea>
+        ></Textarea>
 
-        <button className="btn col-12 col-md-3" type="submit">
+        <Button className="btn col-12 col-md-3" type="submit">
           Submit
-        </button>
+        </Button>
       </form>
 
       {error && <div>Something went wrong...</div>}
