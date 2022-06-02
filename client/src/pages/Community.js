@@ -11,7 +11,7 @@ import {useMediaQuery} from '@chakra-ui/media-query'
 import {Flex, Text} from '@chakra-ui/layout';
 
 const Community = (props) => {
-  const { communityName } = useParams();
+  const { communityName: communityName } = useParams();
 
   //MEDIA QUERY
   const [isNotSmallerScreen] = useMediaQuery("(min-width:600px)");
@@ -41,7 +41,7 @@ const Community = (props) => {
           </Text>
         </div>
         <div className="card-body">
-          <p>{community.communityIdees}</p>
+          <p>{community.communityIdeeText}</p>
         </div>
       </div>
       </Flex>

@@ -8,7 +8,7 @@ const Idees = ({ idees, title }) => {
     }
 
     return (
-        <div class ="visible-scrollbar"
+        <div className="visible-scrollbar"
 >
             <h3>{title}</h3>
             {idees &&
