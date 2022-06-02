@@ -47,7 +47,7 @@ const CommunityForm = () => {
             // clear form value
             setName('');
             setCharacterCount(0);
-            location.reload();
+            window.location.reload();
         } catch (e) {
             console.error(e);
         }
