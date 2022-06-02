@@ -43,6 +43,16 @@ const Community = (props) => {
         <div className="card-body">
           <p>{community.communityIdeeText}</p>
         </div>
+
+        <div>
+          {community.communityIdees.map(idee => {
+            return (
+              <p key={idee._id}>
+                {idee.communityIdeeText}
+              </p>
+            );
+          })}
+        </div>
       </div>
       </Flex>
 

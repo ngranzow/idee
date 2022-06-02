@@ -12,6 +12,7 @@ const CommunityIdeeForm = ({ communityName }) => {
 
     // update state based on form input changes
     const handleChange = (event) => {
+        console.log(event.target.value)
         if (event.target.value.length <= 50) {
             setText(event.target.value);
             setCharacterCount(event.target.value.length);
@@ -21,7 +22,7 @@ const CommunityIdeeForm = ({ communityName }) => {
     // submit form
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
+        console.log(communityIdeeText, communityName)
         try {
             await addCommunityIdee({
                 variables: { communityIdeeText, communityName },

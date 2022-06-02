@@ -153,13 +153,15 @@ const resolvers = {
 
         //ADD COMMUNITY IDEE
         addCommunityIdee: async (parent, { communityName, communityIdeeText }, context) => {
+            console.log(communityName, communityIdeeText)
             if (context.user) {
+                console.log(context.user)
                 const updatedCommunityIdee = await Community.findOneAndUpdate(
                     { communityName: communityName },
                     { $push: { communityIdees: { communityIdeeText, username: context.user.username } } },
                     { new: true, runValidators: true }
                 );
-
+                    console.log(updatedCommunityIdee)
                 return updatedCommunityIdee;
             }
 
