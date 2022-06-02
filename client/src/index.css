@@ -62,7 +62,6 @@ code {
 .visible-scrollbar {
   margin: auto;
   display: block;
-  width: 25vh;
   overflow-y: scroll;
   overflow: auto;
   height: 25vh;
