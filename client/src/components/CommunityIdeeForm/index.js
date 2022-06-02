@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_COMMUNITYIDEE } from '../../utils/mutations';
 import { Textarea } from '@chakra-ui/react'
-import { Button, ButtonGroup } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import { Box } from "@chakra-ui/react"
 
 const CommunityIdeeForm = ({ communityName }) => {
