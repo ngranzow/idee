@@ -21,7 +21,7 @@ const Communities = ({ communities, title }) => {
 
     return (
         
-        <div>
+        <div class = "visible-scrollbar">
             {/* <Flex direction={isNotSmallerScreen ? "row": "column"}
         spacing="200px" p={isNotSmallerScreen ? "32" : "0"}
         alignSelf="flex-start"> */}

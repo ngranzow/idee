@@ -34,7 +34,7 @@ const Home = () => {
         <Flex w="100%">
           {loggedIn && (
 
-             <Flex rounded="xl" direction="column" mt={4} ml={10} bg="blue.100" opacity="0.85" h="30vh" w="30vh" justify="center">
+             <Flex rounded="xl" direction="column" mt={4} ml={10} bg="blue.100" opacity="0.85" h="40vh" w="40vh" justify="center">
             <div className="col-12 mb-3 ">
               <IdeeForm />
             </div>
@@ -42,7 +42,7 @@ const Home = () => {
 
           )}
 
-          <Flex rounded="xl" direction="column" mt={4} ml={10} bg="blue.200" opacity="0.85" h="30vh" w="30vh" justify="center">
+          <Flex rounded="xl" direction="column" mt={4} ml={10} bg="blue.200" opacity="0.85" h="40vh" w="40vh" justify="center">
           <div className={`col-12 mb-3 ${loggedIn && 'col-lg-8'} idee-form1`}>
 
             {loading ? (
@@ -62,7 +62,7 @@ const Home = () => {
           {loggedIn && userData ? (
             <div>
 
-            <Flex rounded="xl" direction="column" mt={4} ml={10} bg="blue.300" opacity="0.85" h="30vh" w="30vh" justify="center">
+            <Flex rounded="xl" direction="column" mt={4} ml={10} bg="blue.300" opacity="0.85" h="40vh" w="40vh" justify="center">
             <div className="col-12 col-lg-3 mb-3">
             <FriendList
               username={userData.me.username}
