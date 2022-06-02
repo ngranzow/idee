@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_COMMUNITY } from '../../utils/mutations';
-import { QUERY_COMMUNITIES, QUERY_ME } from '../../utils/queries';
-import { Box, Textarea, Button, ButtonGroup } from '@chakra-ui/react'
+// import { QUERY_COMMUNITIES, QUERY_ME } from '../../utils/queries';
+import { Box, Textarea, Button } from '@chakra-ui/react'
 
 const CommunityForm = () => {
     const [communityName, setName] = useState('');
@@ -37,6 +37,9 @@ const CommunityForm = () => {
 
     const handleFormSubmit = async event => {
         event.preventDefault();
+        function refreshPage() {
+            window.location.reload(false);
+        }
 
         try {
             // add thought to database
@@ -47,7 +50,7 @@ const CommunityForm = () => {
             // clear form value
             setName('');
             setCharacterCount(0);
-            window.location.reload();
+            refreshPage();
         } catch (e) {
             console.error(e);
         }

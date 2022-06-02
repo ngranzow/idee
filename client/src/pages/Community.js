@@ -11,7 +11,7 @@ import {useMediaQuery} from '@chakra-ui/media-query'
 import {Flex, Text} from '@chakra-ui/layout';
 
 const Community = (props) => {
-  const { communityName: communityName } = useParams();
+  const { communityName } = useParams();
 
   //MEDIA QUERY
   const [isNotSmallerScreen] = useMediaQuery("(min-width:600px)");
