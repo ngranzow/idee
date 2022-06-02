@@ -8,24 +8,24 @@ const CommunityForm = () => {
     const [communityName, setName] = useState('');
     const [characterCount, setCharacterCount] = useState(0);
     const [addCommunity, { error }] = useMutation(ADD_COMMUNITY, {
-        update(cache, { data: { addCommunity } }) {
-            try {
-                const { me } = cache.readQuery({ query: QUERY_ME});
-                cache.writeQuery({
-                    query: QUERY_ME,
-                    data: { me: { ...me, communities: [...me.communities, addCommunity] } },
-                });
-            } catch (e) {
-                console.warn("First community insertion by user!")
-            }
+        // update(cache, { data: { addCommunity } }) {
+        //     try {
+        //         const { me } = cache.readQuery({ query: QUERY_ME});
+        //         cache.writeQuery({
+        //             query: QUERY_ME,
+        //             data: { me: { ...me, communities: [...me.communities, addCommunity] } },
+        //         });
+        //     } catch (e) {
+        //         console.warn("First community insertion by user!")
+        //     }
 
-            const { communities } = cache.readQuery({ query: QUERY_COMMUNITIES });
-            console.log(communities)
-            cache.writeQuery({
-                query: QUERY_COMMUNITIES,
-                data: { communities: [addCommunity, ...communities] },
-            });
-        }
+        //     const { communities } = cache.readQuery({ query: QUERY_COMMUNITIES });
+        //     console.log(communities)
+        //     cache.writeQuery({
+        //         query: QUERY_COMMUNITIES,
+        //         data: { communities: [addCommunity, ...communities] },
+        //     });
+        // }
     });
 
     const handleChange = event => {
@@ -47,6 +47,7 @@ const CommunityForm = () => {
             // clear form value
             setName('');
             setCharacterCount(0);
+            location.reload();
         } catch (e) {
             console.error(e);
         }

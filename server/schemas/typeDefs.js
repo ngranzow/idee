@@ -63,8 +63,8 @@ const typeDefs = gql`
     user(username: String!): User
     idees(username: String): [Idee]
     idee(_id: ID!): Idee
-    communities(username: String): [Community]
-    community(_id: ID!): Community
+    communities(username: String!): [Community]
+    community(communityName: String!): Community
   }
 
   type Mutation {
