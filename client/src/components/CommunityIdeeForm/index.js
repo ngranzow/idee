@@ -48,7 +48,7 @@ const CommunityIdeeForm = ({ communityName }) => {
                 onSubmit={handleFormSubmit}
             >
                 <Textarea
-                    placeholder="Leave a reaction to this thought..."
+                    placeholder="Leave your Idee..."
                     value={communityIdeeText}
                     className="form-input col-12 col-md-9"
                     onChange={handleChange}
