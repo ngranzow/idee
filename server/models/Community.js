@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const communityIdeeSchema = require('./CommunityIdee')
 const dateFormat = require('../utils/dateFormat');
 
 const communitySchema = new Schema(
@@ -19,7 +20,8 @@ const communitySchema = new Schema(
         username: {
             type: String,
             required: true
-        }
+        },
+        communityIdees: [communityIdeeSchema]
     },
     {
         toJSON: {
@@ -28,8 +30,8 @@ const communitySchema = new Schema(
     }
 );
 
-communitySchema.virtual('communityCount').get(function () {
-    return this.communityName.length;
+communitySchema.virtual('communityIdeeCount').get(function () {
+    return this.communityIdees.length;
 })
 
 const Community = model('Community', communitySchema);
